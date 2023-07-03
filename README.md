@@ -90,3 +90,6 @@ README〜ER図作成：7/7 〆切
 
 ### ■画面遷移図
 https://www.figma.com/file/PxMecqG2lpliznWe9NxGPF/Train-Window-View?type=design&node-id=0%3A1&mode=design&t=y3qClG9dKz7qz4j9-1
+
+### ■ER図
+https://app.diagrams.net/#G1whtNzCnkCSxIrXCBLYC0XSplzheQNAYr
