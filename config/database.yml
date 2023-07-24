@@ -80,7 +80,4 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: train_window_trip_production
-  username: train_window_trip
-  password: <%= ENV["TRAIN_WINDOW_TRIP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
