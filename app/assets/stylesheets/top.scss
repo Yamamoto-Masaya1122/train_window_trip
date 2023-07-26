@@ -1,0 +1,34 @@
+.top-wrapper {
+  background-image: image-url("train_window_trip_top.jpg");
+  background-size: cover;
+  height: calc(100vh - 134px);
+  position: relative;
+  background-position: center;
+
+  .top-inner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    font-size: 2.2rem;
+    color: white;
+
+    @media screen and (max-width: 767px) {
+      font-size: 2.0rem;
+    }
+  }
+}
+.artboard-demo {
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  align-items: center;
+  background-color: #00a1d8;
+  border-radius: var(--rounded-box,1rem);
+  box-shadow: 0 1px 3px 0 #0000001a, 0 1px 2px 0 #0000000f;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  justify-content: center;
+}
