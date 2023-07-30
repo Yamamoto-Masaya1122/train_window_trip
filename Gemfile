@@ -75,3 +75,4 @@ group :test do
 end
 
 gem 'sassc'
+gem 'sorcery'
