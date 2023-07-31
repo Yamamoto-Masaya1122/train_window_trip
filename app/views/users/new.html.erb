@@ -3,6 +3,7 @@
     <div class="leading-loose">
       <%= form_with model: @user, class: 'max-w-lg px-10 py-12 xl:mt-16 m-auto bg-white', local: true do |f| %>
         <h1 class="mb-4 text-2xl font-bold text-center text-black-900">会員登録</h1>
+        <%= render 'shared/error_messages', object: f.object %>
         <div class="mb-3 flex-1">
           <div class="pt-2 pb-2 text-sm">
             <%= f.label :name %>
