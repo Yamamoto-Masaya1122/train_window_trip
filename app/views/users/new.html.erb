@@ -1,0 +1,36 @@
+<div class="container flex items-center justify-center flex-1 h-full mx-auto">      
+  <div class="w-full max-w-lg">
+    <div class="leading-loose">
+      <%= form_with model: @user, class: 'max-w-lg px-10 py-12 xl:mt-16 m-auto bg-white', local: true do |f| %>
+        <h1 class="mb-4 text-2xl font-bold text-center text-black-900">会員登録</h1>
+        <div class="mb-3 flex-1">
+          <div class="pt-2 pb-2 text-sm">
+            <%= f.label :name %>
+          </div>
+          <%= f.text_field :name, class: 'input input-bordered w-full' %>
+        </div>
+        <div class="mb-3 flex-1">
+          <div class="pt-2 pb-2 text-sm">
+            <%= f.label :email %>
+          </div>
+          <%= f.email_field :email, class: 'input input-bordered w-full' %>
+        </div>
+        <div class="mb-3 flex-1">
+          <div class="pt-2 pb-2 text-sm">
+            <%= f.label :password %>
+          </div>
+          <%= f.password_field :password, class: 'input input-bordered w-full' %>
+        </div>
+        <div class="mb-3 flex-1">
+          <div class="pt-2 pb-2 text-sm">
+            <%= f.label :password_confirmation %>
+          </div>
+          <%= f.password_field :password_confirmation, class: 'input input-bordered w-full' %>
+        </div>
+        <div class="flex items-center justify-between mt-8">
+          <%= f.submit '会員登録する', type: 'submit', class: 'cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
