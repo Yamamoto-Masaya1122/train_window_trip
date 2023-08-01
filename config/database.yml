@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  database: train_window_trip_production
+  username: train_window_trip
+  password: <%= ENV["TRAIN_WINDOW_TRIP_DATABASE_PASSWORD"] %>
