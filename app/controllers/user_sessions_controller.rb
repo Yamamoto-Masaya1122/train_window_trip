@@ -12,6 +12,8 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
+    logout
+    redirect_back_or_to root_path
   end
 
 end
