@@ -76,3 +76,4 @@ end
 
 gem 'sassc'
 gem 'sorcery'
+gem 'seed-fu'
