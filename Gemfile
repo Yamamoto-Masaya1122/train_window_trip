@@ -77,3 +77,4 @@ end
 gem 'sassc'
 gem 'sorcery'
 gem 'seed-fu'
+gem 'pry-rails'
