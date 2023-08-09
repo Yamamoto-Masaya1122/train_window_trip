@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  line_url: MyText
+  image: MyString
+  recommended_train_window_spot: MyString
+
+two:
+  name: MyString
+  description: MyText
+  line_url: MyText
+  image: MyString
+  recommended_train_window_spot: MyString
