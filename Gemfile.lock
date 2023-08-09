@@ -202,9 +202,6 @@ GEM
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
-    seed-fu (2.3.9)
-      activerecord (>= 3.1)
-      activesupport (>= 3.1)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -270,7 +267,6 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.6)
   sassc
-  seed-fu
   selenium-webdriver
   sorcery
   sprockets-rails
