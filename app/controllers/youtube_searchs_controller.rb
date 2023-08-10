@@ -4,16 +4,16 @@ class YoutubeSearchsController < ApplicationController
 
   def index
     # 動画検索に使う路線名とカテゴリをセット
-    line_name =  nil || " "
-    category =  "海" || " "
+    line_name =  "信楽高原鐵道" || " "
+    category =  nil || " "
     # キーワードがタイトルと完全一致する動画のみを表示するために使う
-    @keyword = nil || " "
-    @category = "海"
+    @keyword = "信楽高原鐵道" || " "
+    @category = nil
 
     @youtube_data = find_videos(line_name, category)
   end
   
-  def find_videos(keyword, category, after: 2.years.ago, before: Time.now)
+  def find_videos(keyword, category, after: 3.years.ago, before: Time.now)
     service = Google::Apis::YoutubeV3::YouTubeService.new
     # Herokuにデプロイする用
     service.key = ENV['api_key']
@@ -25,11 +25,16 @@ class YoutubeSearchsController < ApplicationController
       :snippet,
       type: "video",
       q: keyword + " " +  "前面展望" + " " + category,
-      max_results: 9,
+      max_results: 24,
+      # HD 動画のみ
       video_definition: "high",
-      video_duration: "long",
+      # 埋め込み可能な動画のみを検索
       video_embeddable: true,
+      # 関連度が高い順
+      order: "relevance",
+      # 3年前より後のみ
       published_after: after.iso8601,
+      # 本日より前のみ
       published_before: before.iso8601,
       fields: 'items(id(videoId), snippet(title, description, thumbnails(medium(url))))'
     )
