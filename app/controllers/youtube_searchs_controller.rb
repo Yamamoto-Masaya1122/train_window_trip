@@ -1,7 +1,6 @@
 require 'google/apis/youtube_v3'
 require 'active_support/all'
 class YoutubeSearchsController < ApplicationController
-  # GOOGLE_API_KEY = "ここにAPIキーが入る"
 
   def index
     # 動画検索に使う路線名とカテゴリをセット
@@ -16,7 +15,8 @@ class YoutubeSearchsController < ApplicationController
   
   def find_videos(keyword, category, after: 2.years.ago, before: Time.now)
     service = Google::Apis::YoutubeV3::YouTubeService.new
-    service.key = GOOGLE_API_KEY
+    # Herokuにデプロイする用
+    service.key = ENV['api_key']
 
     @youtube_data = []
 
