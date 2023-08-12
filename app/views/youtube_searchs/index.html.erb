@@ -1,0 +1,15 @@
+<% if !@category.blank? %>
+  <%# カテゴリを選択した場合、タイトルにキーワードと前面展望とカテゴリが含まれる動画だけを表示する %>
+  <% @youtube_data.each do |item| %>
+    <% if item[:title].include?(@keyword) && item[:title].include?("前面展望") && item[:title].include?(@category) %>
+      <iframe src="https://www.youtube.com/embed/<%= item[:video_id] %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <% end %>
+  <% end %>
+<% else %>
+  <%# カテゴリを選択しなかった場合、タイトルにキーワードと前面展望が含まれる動画だけを表示する %>
+  <% @youtube_data.each do |item| %>
+    <% if item[:title].include?(@keyword) && item[:title].include?("前面展望")%>
+      <iframe src="https://www.youtube.com/embed/<%= item[:video_id] %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <% end %>
+  <% end %>
+<% end %>

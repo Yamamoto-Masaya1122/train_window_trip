@@ -77,3 +77,5 @@ end
 gem 'sassc'
 gem 'sorcery'
 gem 'pry-rails'
+gem 'google-apis-youtube_v3'
+gem 'dotenv-rails'
