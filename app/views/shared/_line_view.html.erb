@@ -1,0 +1,21 @@
+<% if @lines.present? %>
+  <% @lines.each do |line| %>
+    <div class="flex flex-row flex-wrap justify-start">  
+      <div class="card lg:card-side bg-base-100 shadow-xl m-4 bg-gray-200">
+        <figure><%= image_tag line.image %></figure>
+        <div class="card-body">
+          <h2 class="card-title"><%= line.name %></h2>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <%= line.description %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="text-center">
+    <p class="text-md flex justify-center">該当する路線が見つかりませんでした。</p>
+  </div>
+<% end %>
