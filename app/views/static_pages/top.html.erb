@@ -8,48 +8,20 @@
   <!-- 検索フォーム -->
   <div class="p-3.5">
     <div class="artboard-demo bg-secondary-focus sm:col-span-2 p-3.5 items-center text-center">
+      <h2 class="text-center font-bold font-serif text-xl">都道府県で検索</h2>
       <div class="sm:col-span-2 p-3.5">
-        <h2 class="text-center font-bold font-serif text-xl">都道府県で検索</h2>
-      </div>
-      <div class="p-3.5">
-        <span>
-          <select class="select select-bordered w-full max-w-xs">
-            <option disabled selected>都道府県</option>
-            <option>大阪府</option>
-            <option>京都府</option>
-          </select>
-        </span>
-        <span>
-          <select class="select select-bordered w-full max-w-xs">
-            <option disabled selected>路線名</option>
-            <option>京都丹後鉄道宮福線</option>
-            <option>京阪本線</option>
-          </select>
-        </span>
-      </div>
-      <div class="sm:col-span-2 p-3.5">
-        <h2 class="text-center font-bold font-serif text-xl">カテゴリで検索</h2>
-      </div>
-      <div class="p-3.5">
-        <input type="checkbox" checked="checked" class="checkbox" />
-        <label>桜</label>
-        <input type="checkbox" checked="checked" class="checkbox" />
-        <label>海</label>
-        <input type="checkbox" checked="checked" class="checkbox" />
-        <label>紅葉</label>
-        <input type="checkbox" checked="checked" class="checkbox" />
-        <label>雪</label>
-        <input type="checkbox" checked="checked" class="checkbox" />
-        <label>山</label>
-        <input type="checkbox" checked="checked" class="checkbox" />
-        <label>湿原</label>
-        <input type="checkbox" checked="checked" class="checkbox" />
-        <label>夜景</label>
-        <input type="checkbox" checked="checked" class="checkbox" />
-        <label>夕暮れ</label>
-      </div>
-      <div class="p-3.5">
-        <button class="btn btn-wide btn btn-accent">検索</button>
+        <%= search_form_for @line, url: search_results_path do |f| %>
+          <%# 都道府県検索 %>
+          <div class="p-3.5 inline-flex">
+            <%= f.collection_select(:prefecture_lines_prefecture_id_eq, @prefectures, :id, :name, {include_blank: "都道府県を選択"}, {class:"select select-bordered  max-w-xs"}) %>
+            <%= f.collection_select(:id_eq, @lines, :id, :name, {include_blank: "路線名を選択"}, {class:"select select-bordered max-w-xs pl-8 ml-4"}) %>
+            <button class="btn btn-accent ml-4"><%= f.submit '検索' %></button>
+          </div>
+          <h2 class="text-center font-bold font-serif text-xl">カテゴリ検索</h2>
+          <div class="p-3.5">
+            <%= f.collection_select(:line_categories_category_id_eq, @categories, :id, :name, {include_blank: "カテゴリを選択"}, {class:"select select-bordered  max-w-xs pl-8"}) %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
