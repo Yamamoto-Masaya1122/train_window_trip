@@ -18,6 +18,14 @@
           <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><h2>おすすめの車窓</h2></td>
           <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed"><%= @line.recommended_train_window_spot %></td>
         <tr>
+        <tr>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><h2>カテゴリ</h2></td>
+          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed">
+            <% @line.categories.each do |category| %>
+              <p class="mx-1 badge badge-outline bg-accent text-white text-sm sm:text-base"><%= category.name %></p>
+            <% end %>
+          </td>
+        <tr>
       </tbody>
     </table>
     <div class="flex items-center justify-between mt-8">
