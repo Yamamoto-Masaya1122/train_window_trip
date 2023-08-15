@@ -3,4 +3,8 @@ class SearchResultsController < ApplicationController
     @line = Line.ransack(params[:q])
     @lines = @line.result
   end
+
+  def show
+    @line = Line.find(params[:id])
+  end
 end

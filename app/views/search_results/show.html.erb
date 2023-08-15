@@ -1,0 +1,24 @@
+<div class="max-w-screen-md mx-auto">
+  <div class="mx-2">
+    <h1 class="text-2xl sm:text-3xl font-extrabold leading-normal mt-16 mb-2 mx-2 text-center"><%= @line.name %></h1>
+    <div class="flex justify-center mb-12">
+      <%= image_tag @line.image, class: "w-3/5" %>
+    </div>
+    <table class="mb-8 font-light table-border w-full">
+      <tbody class="w-11/12 m-auto">
+        <tr>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><h2>詳細</h2></td>
+          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed"><%= @line.description %></td>
+        <tr>
+        <tr>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><h2>ホームページ</h2></td>
+          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed link link-accent"><%= link_to @line.line_url, @line.line_url %></td>
+        <tr>
+        <tr>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><h2>おすすめの車窓</h2></td>
+          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed"><%= @line.recommended_train_window_spot %></td>
+        <tr>
+      </tbody>
+    </table>
+  </div>
+</div>
