@@ -1,0 +1,13 @@
+<% if flash[:success] %>
+  <div class="alert alert-success rounded-sm">
+    <%= flash[:success] %>
+  </div>
+<% elsif flash[:error] %>
+  <div class="alert alert-error rounded-sm">
+    <%= flash[:error] %>
+  </div>
+<% elsif flash[:warning] %>
+  <div class="alert alert-warning rounded-sm">
+    <%= flash[:warning] %>
+  </div>
+<% end %>
