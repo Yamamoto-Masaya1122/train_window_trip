@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :youtube_searchs, only: [:index]
   resources :search_results, only: [:index, :show]
+  resource :profile, only: [:show, :edit, :update]
 end
