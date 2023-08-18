@@ -1,10 +1,10 @@
 <div class="flex flex-col items-center justify-center my-10">
   <div class="items-center justify-center mb-3">
     <div class="py-1 text-2xl">
-      <%= @user.name %>
+      <%= current_user.name %>
     </div>
     <div class="py-7 text-2xl">
-      <%= @user.email %>
+      <%= current_user.email %>
     </div>
     <button class="btn btn-accent"><%= link_to 'プロフィール編集', edit_profile_path %></button>
   </div>
