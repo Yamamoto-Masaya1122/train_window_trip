@@ -1,4 +1,6 @@
 class SearchResultsController < ApplicationController
+  skip_before_action :require_login, only: %i[index show]
+
   def index
     @line = Line.ransack(params[:q])
     @lines = @line.result

@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
   before_action :set_prefecture
   before_action :set_line
   before_action :set_category
+  skip_before_action :require_login, only: %i[top]
 
   def top; end
 

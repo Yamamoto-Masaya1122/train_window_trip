@@ -1,6 +1,7 @@
 require 'google/apis/youtube_v3'
 require 'active_support/all'
 class YoutubeSearchsController < ApplicationController
+  skip_before_action :require_login, only: %i[index]
 
   def index
     @youtube_data = find_videos(params[:format])
