@@ -8,5 +8,7 @@ class SearchResultsController < ApplicationController
 
   def show
     @line = Line.find(params[:id])
+    @comment = Comment.new
+    @comments = @line.comments.includes(:user).order(created_at: :desc)
   end
 end
