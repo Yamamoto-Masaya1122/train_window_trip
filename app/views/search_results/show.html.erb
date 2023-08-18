@@ -36,4 +36,7 @@
 
   <!-- コメントフォーム -->
   <%= render 'comments/form', { line: @line, comment: @comment } %>
+
+  <!-- コメント一覧 -->
+  <%= render 'comments/comment', { line: @line, comments: @comments } %>
 </div>

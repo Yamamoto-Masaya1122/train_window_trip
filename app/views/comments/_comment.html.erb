@@ -1,0 +1,18 @@
+<div class="mt-10 mx-auto w-11/12">
+  <% if comments.present? %>
+    <% comments.each do |comment| %>
+      <ul role="list" class="py-2 divide-y divide-gray-100">
+        <li class="flex justify-between border-t m-auto mx-4 ">
+          <div class="p-2">
+            <p class="font-extrabold text-md"><%= comment.user.name %></p>
+            <p class="font-nomal"><%= simple_format(comment.body) %></p>
+          </div>
+        </li>
+      </ul>
+    <% end %>
+  <% else %>
+    <div class="border-t m-auto mx-4 text-center">
+    <p class="pt-3">コメントがありません</p>
+    </div>
+  <% end %>
+</div>
