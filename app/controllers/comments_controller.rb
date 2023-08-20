@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   def create
     comment = current_user.comments.build(comment_params)
 
@@ -7,6 +8,12 @@ class CommentsController < ApplicationController
     else
       redirect_to search_result_path(params[:search_result_id]), warning: 'コメントできませんでした'
     end
+  end
+
+  def destroy
+    @comment = current_user.comments.find(params[:search_result_id])
+    @comment.destroy!
+    redirect_to search_result_path(params[:id]), success: 'コメントを削除しました'
   end
 
   private
