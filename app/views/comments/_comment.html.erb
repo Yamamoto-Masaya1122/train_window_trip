@@ -7,7 +7,7 @@
             <p class="font-extrabold text-md"><%= comment.user.name %></p>
             <p class="font-nomal"><%= simple_format(comment.body) %></p>
           </div>
-          <% if current_user.own?(comment) %>
+          <% if comment.user == current_user %>
             <div class="flex items-end mr-1">
               <%= link_to search_result_comment_path(comment), data: { turbo_method: :delete} do %>
                 <i class="fa-solid fa-trash"></i>
@@ -19,7 +19,7 @@
     <% end %>
   <% else %>
     <div class="comment-index-border m-auto mx-4 text-center">
-    <p class="pt-3">コメントがありません</p>
+      <p class="pt-3">コメントがありません</p>
     </div>
   <% end %>
 </div>
