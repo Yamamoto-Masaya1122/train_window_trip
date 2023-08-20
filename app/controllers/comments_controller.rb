@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     if comment.save
       redirect_to search_result_path(params[:search_result_id]), success: 'コメントしました'
     else
-      redirect_to search_result_path(params[:search_result_id]), warning: 'コメントできませんでした'
+      redirect_to search_result_path(params[:search_result_id]), error: 'コメントできませんでした'
     end
   end
 
