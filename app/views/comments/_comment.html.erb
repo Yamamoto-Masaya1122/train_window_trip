@@ -1,0 +1,25 @@
+<div class="mt-10 mx-auto">
+  <% if comments.present? %>
+    <% comments.each do |comment| %>
+      <ul role="list" class="py-2 comment-index-border">
+        <li class="flex justify-between m-auto mx-4 ">
+          <div class="p-2">
+            <p class="font-extrabold text-md"><%= comment.user.name %></p>
+            <p class="font-nomal"><%= simple_format(comment.body) %></p>
+          </div>
+          <% if comment.user == current_user %>
+            <div class="flex items-end mr-1">
+              <%= link_to search_result_comment_path(comment), data: { turbo_method: :delete} do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  <% else %>
+    <div class="comment-index-border m-auto mx-4 text-center">
+      <p class="pt-3">コメントがありません</p>
+    </div>
+  <% end %>
+</div>
