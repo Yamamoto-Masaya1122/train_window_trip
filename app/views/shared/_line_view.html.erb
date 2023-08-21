@@ -4,7 +4,7 @@
       <div class="card lg:card-side bg-base-100 shadow-xl m-4 bg-gray-200">
         <figure><%= image_tag line.image %></figure>
         <div class="card-body">
-          <h2 class="card-title link link-accent"><%= link_to line.name, search_result_path(line) %></h2>
+          <h2 class="card-title link link-accent"><%= link_to line.name, line_path(line) %></h2>
           <ul class="list-inline">
             <li class="list-inline-item">
               <%= line.description %>
