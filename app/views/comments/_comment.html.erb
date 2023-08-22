@@ -1,22 +1,28 @@
 <div class="mt-10 mx-auto">
   <%= turbo_frame_tag dom_id(comment) do %>
-    <ul role="list" class="py-2 comment-index-border">
-      <li class="flex justify-between m-auto mx-4 ">
-        <div class="p-2">
-          <p class="font-extrabold text-md"><%= comment.user.name %></p>
-          <p class="font-nomal"><%= simple_format(comment.body) %></p>
-        </div>
-        <% if current_user&.id == comment.user_id %>
-          <div class="flex items-end mr-1">
-            <%= link_to polymorphic_path([comment.commentable, comment]), 
-            class: 'js-delete-comment-button',
-            id: "button-delete-#{comment.id}", 
-            data: { turbo_method: :delete, turbo_confirm: 'コメントを削除しますか？' } do %>
-              <i class="fa-solid fa-trash"></i>
-            <% end %>
+    <div class="card w-96 bg-base-100 shadow-xl">
+      <div class="card-body">
+        <li class="flex justify-between m-auto mx-4 ">
+          <div class="p-2">
+            <p class="font-extrabold text-md"><%= comment.user.name %></p>
+            <p class="font-nomal"><%= simple_format(comment.body) %></p>
           </div>
-        <% end %>
-      </li>
-    </ul>
+          <% if current_user&.id == comment.user_id %>
+            <div class="card-actions justify-end">
+              <%= link_to edit_polymorphic_path([comment.commentable, comment]), 
+              id: "edit_#{comment.id}" do %>
+                <i class="fa-solid fa-pen"></i>
+              <% end %>
+              <%= link_to polymorphic_path([comment.commentable, comment]), 
+              class: 'js-delete-comment-button',
+              id: "button-delete-#{comment.id}", 
+              data: { turbo_method: :delete, turbo_confirm: 'コメントを削除しますか？' } do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </li>
+      </div>
+    </div>
   <% end %>
 </div>

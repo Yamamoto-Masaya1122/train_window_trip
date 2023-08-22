@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :youtube_searchs, only: [:index]
   resource :profile, only: [:show, :edit, :update]
   resources :lines, only: %i[index show] do
-    resources :comments, only: %i[create update destroy]
+    resources :comments, only: %i[create edit update destroy]
   end
 end
