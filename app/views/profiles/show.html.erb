@@ -6,6 +6,8 @@
     <div class="py-7 text-2xl">
       <%= current_user.email %>
     </div>
-    <button class="btn btn-accent"><%= link_to 'プロフィール編集', edit_profile_path %></button>
+    <button class="text-white bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 rounded-lg px-4 py-2">
+      <%= link_to 'プロフィール編集', edit_profile_path %>
+    </button>
   </div>
 </div>
