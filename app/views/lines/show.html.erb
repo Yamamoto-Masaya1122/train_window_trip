@@ -35,8 +35,11 @@
   </div>
 
   <!-- コメントフォーム -->
-  <div class='p-3.5 text-red-600'>※ログインしないとコメントは投稿できません</div>
-  <%= render 'comments/form', { commentable: @line, comment: @comment } %>
+  <% if logged_in? %>
+    <%= render 'comments/form', { commentable: @line, comment: @comment } %>
+  <% else %>
+    <div class='p-3.5 text-red-600'>※ログインしないとコメントは投稿できません</div>
+  <% end %>
   <!-- コメント一覧 -->
   <%= render 'comments/comments', { comments: @comments } %>
 </div>
