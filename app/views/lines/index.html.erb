@@ -4,7 +4,13 @@
     <div class="col-12">
       <div class="row py-12">
         <h1 class="mb-4 text-2xl font-bold text-center text-black-900">検索結果</h1>
-        <%= render 'shared/line_view', lines: @lines %>
+        <% if @lines.present? %>
+          <%= render @lines %>
+        <% else %>
+          <div class="text-center">
+            <p class="text-md flex justify-center">該当する路線が見つかりませんでした。</p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
