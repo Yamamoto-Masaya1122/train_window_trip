@@ -1,20 +1,16 @@
-<div class="mx-auto">
-  <%= turbo_frame_tag 'comment_form' do %>
-    <%= form_with model: [commentable, comment], id: 'new_comment' do |form| %>
-      <% comment.errors.full_messages.each do |message| %>
-        <div class="alert alert-error alert-dismissible fade show" role="alert">
-          <%= message %>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      <% end %>
-      <div class="mb-3">
-        <% form.label :body %>
-        <div class='p-3.5 text-red-600'>※ログインしないとコメントは投稿できません</div>
-        <%= form.text_area :body, class:"block w-full cursor-auto rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", id: 'js-new-comment-body', placeholder: "コメント内容" %>
-      </div>
-      <div class="ml-auto">
-        <%= form.submit '投稿', class:"text-white bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 rounded-lg px-4 py-2 " %>
+<%= turbo_frame_tag 'comment_form' do %>
+  <%= form_with model: [commentable, comment], id: dom_id(comment) do |form| %>
+    <% comment.errors.full_messages.each do |message| %>
+      <div class="alert alert-error mb-4">
+        <%= message %>
       </div>
     <% end %>
+    <div class="mb-3">
+      <% form.label :body %>
+      <%= form.text_area :body, class:"block w-full cursor-auto rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", id: 'js-new-comment-body', placeholder: "コメント内容" %>
+    </div>
+    <div class="ml-auto">
+      <%= form.submit '投稿', class:"text-white bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 rounded-lg px-4 py-2 " %>
+    </div>
   <% end %>
-</div>
+<% end %>
