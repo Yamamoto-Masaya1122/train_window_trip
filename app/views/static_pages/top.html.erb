@@ -4,11 +4,11 @@
   </div>
 </div>
 <div class="mx-auto px-1 py-3 sm:px-1 max-w-3xl text-center">
-  <h1 class="font-serif text-3xl font-bold text-center">車窓動画を検索する</h1>
+  <h1 class="font-serif text-3xl font-bold text-center mt-14 mb-4">美しい鉄道路線を検索する</h1>
   <!-- 検索フォーム -->
   <div class="p-3.5">
     <div class="artboard-demo bg-secondary-focus sm:col-span-2 p-3.5 items-center text-center">
-      <h2 class="text-center font-bold font-serif text-xl">都道府県で検索</h2>
+      <h2 class="text-center font-bold font-serif text-xl mt-5">都道府県から検索</h2>
       <div class="sm:col-span-2 p-3.5">
         <%= search_form_for @line do |f| %>
           <%# 都道府県検索 %>
@@ -19,10 +19,16 @@
               <%= f.submit '検索' %>
             </button>
           </div>
-          <h2 class="text-center font-bold font-serif text-xl">カテゴリ検索</h2>
-          <div class="p-3.5">
-            <%= f.collection_select(:line_categories_category_id_eq, @categories, :id, :name, {include_blank: "カテゴリを選択"}, {class:"select select-bordered  max-w-xs pl-8"}) %>
-          </div>
+        <% end %>
+        <h2 class="text-center font-bold font-serif text-xl mt-14 mb-4">カテゴリから検索</h2>
+        <%= search_form_for @line do |f| %>
+          <% Category.all.each do |category| %>
+            <%= f.check_box :line_categories_category_id_eq_any, { multiple: true, checked: category[:checked], disabled: category[:disabled], include_hidden: false, class: 'checkbox checkbox-accent' }, category[:id] %>
+            <%= f.label :line_categories_category_id_eq_any, category.name, { class: 'font-bold font-serif text-lg' }, value: category[:id] %>
+          <% end %>
+          <button class="text-white bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 rounded-lg px-4 py-2 ml-4">
+            <%= f.submit '検索' %>
+          </button>
         <% end %>
       </div>
     </div>

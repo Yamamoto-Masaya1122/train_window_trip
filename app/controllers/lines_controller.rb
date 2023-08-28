@@ -3,7 +3,7 @@ class LinesController < ApplicationController
 
   def index
     @line = Line.ransack(params[:q])
-    @lines = @line.result
+    @lines = @line.result(distinct: true)
   end
 
   def show
