@@ -4,6 +4,7 @@ ja:
     register: '会員登録する'
     logout: 'ログアウト'
     edit: '編集'
+    save_edit: '編集を保存'
     password_reset: 'パスワードリセット'
     delete: '削除'
     show: '詳細'
