@@ -6,24 +6,24 @@
       <%= image_tag @line.image, class: "w-3/5" %>
     </div>
     <div class="flex items-center justify-center my-7">
-      <%= link_to '車窓動画を見る', youtube_searchs_path(@line.name), class: 'cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg' %>
+      <%= link_to (t 'lines.show.search_button'), youtube_searchs_path(@line.name), class: 'cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg' %>
     </div>
     <table class="mb-8 font-light table-border w-full">
       <tbody class="w-11/12 m-auto">
         <tr>
-          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><h2>詳細</h2></td>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Line.human_attribute_name(:description) %></td>
           <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed"><%= @line.description %></td>
         <tr>
         <tr>
-          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><h2>ホームページ</h2></td>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Line.human_attribute_name(:line_url) %></td>
           <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed link link-accent"><%= link_to @line.line_url, @line.line_url %></td>
         <tr>
         <tr>
-          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><h2>おすすめの車窓</h2></td>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Line.human_attribute_name(:recommended_train_window_spot) %></td>
           <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed"><%= @line.recommended_train_window_spot %></td>
         <tr>
         <tr>
-          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><h2>カテゴリ</h2></td>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Category.human_attribute_name(:name) %></td>
           <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed">
             <% @line.categories.each do |category| %>
               <p class="mx-1 badge badge-outline bg-accent text-white text-sm sm:text-base"><%= category.name %></p>

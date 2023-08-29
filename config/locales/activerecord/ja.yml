@@ -3,6 +3,8 @@ ja:
     models:
       user: 'ユーザー'
       comment: 'コメント'
+      line: '路線'
+      category: 'カテゴリ'
     attributes:
       user:
         name: '名前'
@@ -11,3 +13,9 @@ ja:
         password_confirmation: 'パスワード確認'
       comment:
         body: 'コメント'
+      line:
+        description: '詳細'
+        line_url: 'ホームページ'
+        recommended_train_window_spot: 'おすすめの車窓'
+      category:
+        name: 'カテゴリ'
