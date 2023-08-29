@@ -17,6 +17,13 @@ ja:
       deleted: "%{item}を削除しました"
       deleted_confirm: "削除しますか？"
       not_authorized: '管理者権限を持っていません'
+  static_pages:
+    privacy_policy:
+      title: 'プライバシーポリシー'
+    terms_of_service:
+      title: '利用規約'
+    contact:
+      title: 'お問い合せ'
   users:
     new:
       title: '会員登録'
