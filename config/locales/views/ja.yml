@@ -4,10 +4,10 @@ ja:
     register: '会員登録する'
     logout: 'ログアウト'
     edit: '編集'
+    profile_edit: 'プロフィール編集'
     save_edit: '編集を保存'
     password_reset: 'パスワードリセット'
     delete: '削除'
-    show: '詳細'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
