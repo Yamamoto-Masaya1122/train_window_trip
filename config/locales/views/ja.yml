@@ -4,6 +4,8 @@ ja:
     register: '会員登録する'
     logout: 'ログアウト'
     edit: '編集'
+    post: '投稿'
+    cancel: 'キャンセル'
     profile_edit: 'プロフィール編集'
     save_edit: '編集を保存'
     search: '検索'
@@ -31,7 +33,6 @@ ja:
   users:
     new:
       title: '会員登録'
-      to_login_page: 'ログインページへ'
     create: 
       success: 'ユーザー登録が完了しました'
       fail: 'ユーザー登録に失敗しました'

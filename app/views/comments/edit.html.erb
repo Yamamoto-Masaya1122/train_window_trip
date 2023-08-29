@@ -3,7 +3,7 @@
     <div class="card-body">
       <%= render 'comments/form', commentable: @commentable, comment: @comment %>
       <div class="ml-auto">
-        <%= link_to 'キャンセル', @commentable, class: 'inline-flex items-center text-white bg-gray-500 hover:bg-gray-600 focus:ring-gray-500 focus:ring-offset-gray-500 rounded-lg px-4 py-2' %>
+        <%= link_to (t 'defaults.cancel'), @commentable, class: 'inline-flex items-center text-white bg-gray-500 hover:bg-gray-600 focus:ring-gray-500 focus:ring-offset-gray-500 rounded-lg px-4 py-2' %>
       </div>
     </div>
   </div>
