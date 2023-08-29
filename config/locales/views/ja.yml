@@ -6,6 +6,7 @@ ja:
     edit: '編集'
     profile_edit: 'プロフィール編集'
     save_edit: '編集を保存'
+    search: '検索'
     password_reset: 'パスワードリセット'
     delete: '削除'
     message:
@@ -18,6 +19,9 @@ ja:
       deleted_confirm: "削除しますか？"
       not_authorized: '管理者権限を持っていません'
   static_pages:
+    top:
+      prefecture: '都道府県で検索'
+      category: 'カテゴリで検索'
     privacy_policy:
       title: 'プライバシーポリシー'
     terms_of_service:
