@@ -2,8 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@fortawesome/fontawesome-free"
-import jquery from "jquery"
-window.$ = jquery
 
 // Turbo フレームが読み込まれた際にファンクションが実行される
 document.addEventListener("turbo:load", function() {
