@@ -20,7 +20,7 @@
             </button>
           </div>
         <% end %>
-        <h2 class="text-center font-bold font-serif text-xl mt-14 mb-4">カテゴリから検索</h2>
+        <h2 class="text-center font-bold font-serif text-xl mt-8 mb-4">カテゴリから検索</h2>
         <%= search_form_for @line do |f| %>
           <% Category.all.each do |category| %>
             <%= f.check_box :line_categories_category_id_eq_any, { multiple: true, checked: category[:checked], disabled: category[:disabled], include_hidden: false, class: 'checkbox checkbox-accent' }, category[:id] %>
