@@ -13,8 +13,8 @@
         <%= search_form_for @line do |f| %>
           <%# 都道府県検索 %>
           <div class="p-3.5 inline-flex">
-            <%= f.collection_select(:prefecture_lines_prefecture_id_eq, @prefectures, :id, :name, {include_blank: "都道府県を選択"}, {class:"select select-bordered  max-w-xs"}) %>
-            <%= f.collection_select(:id_eq, @lines, :id, :name, {include_blank: "路線名を選択"}, {class:"select select-bordered max-w-xs pl-8 ml-4"}) %>
+            <%= f.collection_select(:prefecture_lines_prefecture_id_eq, @prefectures, :id, :name, { include_blank: "都道府県を選択" }, { class: "select select-bordered max-w-xs", id: "prefecture-select" }) %>
+            <%= f.collection_select(:id_eq, @lines, :id, :name, { include_blank: "路線名を選択" }, { class: "select select-bordered max-w-xs pl-8 ml-4", id: "line-select" }) %>
             <button class="text-white bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 rounded-lg px-4 py-2 ml-4">
               <%= f.submit '検索' %>
             </button>
