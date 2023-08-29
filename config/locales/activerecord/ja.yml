@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      comment: 'コメント'
+    attributes:
+      user:
+        name: '名前'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+      comment:
+        body: 'コメント'
