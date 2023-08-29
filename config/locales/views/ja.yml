@@ -18,7 +18,7 @@ ja:
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
-      deleted_confirm: "削除しますか？"
+      deleted_confirm: "%{item}を削除しますか？"
       not_authorized: '管理者権限を持っていません'
   static_pages:
     top:
