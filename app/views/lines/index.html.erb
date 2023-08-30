@@ -2,8 +2,8 @@
   <!-- 検索結果 -->
   <div class="row">
     <div class="col-12">
-      <div class="row py-12">
-        <h1 class="mb-4 text-2xl font-bold text-center text-black-900"><%= t '.title' %></h1>
+      <h1 class="my-24 text-2xl font-bold text-center text-black-900"><%= t '.title' %></h1>
+      <div class="pb-12 flex flex-row flex-wrap justify-center">
         <% if @lines.present? %>
           <%= render @lines %>
         <% else %>
