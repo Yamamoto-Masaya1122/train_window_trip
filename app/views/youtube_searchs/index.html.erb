@@ -13,6 +13,11 @@
             <iframe class="w-full" height="230" src="https://www.youtube.com/embed/<%= item[:video_id] %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div><%= item[:view_count].to_s(:delimited) %>回再生</div>
           </div>
+        <% elsif item[:description].include?(@keyword) && item[:description].include?("前面展望") %>
+          <div class="flex flex-col group h-64 bg-gray-100 rounded-lg overflow-hidden shadow-lg relative">
+            <iframe class="w-full" height="230" src="https://www.youtube.com/embed/<%= item[:video_id] %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div><%= item[:view_count].to_s(:delimited) %>回再生</div>
+          </div>
         <% end %>
       <% end %>
     </div>
