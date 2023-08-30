@@ -4,7 +4,8 @@ class YoutubeSearchsController < ApplicationController
   skip_before_action :require_login, only: %i[index]
 
   def index
-    @youtube_data = find_videos(params[:format])
+    @line = Line.find(params[:id])
+    @youtube_data = find_videos(@line.name)
   end
   
   def find_videos(keyword, after: 4.years.ago, before: Time.now)
