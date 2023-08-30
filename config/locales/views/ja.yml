@@ -11,6 +11,8 @@ ja:
     search: '検索'
     password_reset: 'パスワードリセット'
     delete: '削除'
+    top_button: 'トップページに戻る'
+    line_show_button: '路線詳細ページに戻る'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
