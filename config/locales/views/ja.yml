@@ -1,0 +1,78 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '会員登録する'
+    logout: 'ログアウト'
+    edit: '編集'
+    post: '投稿'
+    cancel: 'キャンセル'
+    profile_edit: 'プロフィール編集'
+    save_edit: '編集を保存'
+    search: '検索'
+    password_reset: 'パスワードリセット'
+    delete: '削除'
+    message:
+      require_login: 'ログインしてください'
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成できませんでした"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新できませんでした"
+      deleted: "%{item}を削除しました"
+      deleted_confirm: "%{item}を削除しますか？"
+      not_authorized: '管理者権限を持っていません'
+  static_pages:
+    top:
+      prefecture: '都道府県で検索'
+      category: 'カテゴリで検索'
+    privacy_policy:
+      title: 'プライバシーポリシー'
+    terms_of_service:
+      title: '利用規約'
+    contact:
+      title: 'お問い合せ'
+  users:
+    new:
+      title: '会員登録'
+    create: 
+      success: 'ユーザー登録が完了しました'
+      fail: 'ユーザー登録に失敗しました'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      to_register_page: '登録ページへ'
+      password_forget: 'パスワードをお忘れの方はこちら'
+    create: 
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
+  profiles:
+    show:
+      title: 'マイページ'
+    edit:
+      title: 'プロフィール編集'
+  lines:
+    index:
+      title: '検索結果'
+    show:
+      search_button: '車窓動画を見る'
+  password_resets:
+    new:
+      title: 'パスワードリセット申請'
+      submit: '送信'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    edit:
+      title: 'パスワードリセット'
+    update:
+      success: 'パスワードを変更しました'
+      fail: 'パスワードの変更に失敗しました'
+  admin:
+    user_sessions:
+      new:
+        title: 'ログイン'
+      create: 
+        success: 'ログインしました'
+        fail: 'ログインに失敗しました'
+      destroy:
+        success: 'ログアウトしました'

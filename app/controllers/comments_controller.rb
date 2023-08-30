@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
           ]
         end
         format.js
-        format.html { redirect_to @comment.commentable, flash: { success: 'コメントしました' } }
+        format.html { redirect_to @comment.commentable, flash: { success: t('defaults.message.created', item: Comment.model_name.human)} }
       else
         format.turbo_stream do
           render turbo_stream: [
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
             turbo_stream.prepend('error_messages', partial: 'shared/error_messages', locals: { object: @comment }),
           ]
         end
-        format.html { redirect_to @comment.commentable, flash: { error: 'コメントできませんでした' } }
+        format.html { redirect_to @comment.commentable, flash: { error: t('defaults.message.not_created', item: Comment.model_name.human) } }
       end
     end
   end
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
         format.turbo_stream { render turbo_stream: turbo_stream.remove(@comment) }
         format.js
-        format.html { redirect_to @comment.commentable, flash: { success: 'コメントを削除しました' } }
+        format.html { redirect_to @comment.commentable, flash: { success: t('defaults.message.destroyed', item: Comment.model_name.human) } }
     end
   end
 

@@ -2,7 +2,7 @@
   <div class="w-full max-w-lg">
     <div class="leading-loose">
       <%= form_with model: @user, class: 'max-w-lg px-10 py-12 xl:mt-16 m-auto', local: true do |f| %>
-        <h1 class="mb-4 text-2xl font-bold text-center text-black-900">会員登録</h1>
+        <h1 class="mb-4 text-2xl font-bold text-center text-black-900"><%= t '.title' %></h1>
         <%= render 'shared/error_messages', object: f.object %>
         <div class="mb-3 flex-1">
           <div class="pt-2 pb-2 text-sm">
@@ -29,7 +29,7 @@
           <%= f.password_field :password_confirmation, class: 'input input-bordered w-full' %>
         </div>
         <div class="flex items-center justify-between mt-8">
-          <%= f.submit '会員登録する', type: 'submit', class: 'cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg' %>
+          <%= f.submit (t 'defaults.register'), type: 'submit', class: 'cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg' %>
         </div>
       <% end %>
     </div>

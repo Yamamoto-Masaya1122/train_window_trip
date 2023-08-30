@@ -16,7 +16,7 @@
               <%= link_to polymorphic_path([comment.commentable, comment]), 
               class: 'js-delete-comment-button',
               id: "button-delete-#{comment.id}", 
-              data: { turbo_method: :delete, turbo_confirm: 'コメントを削除しますか？' } do %>
+              data: { turbo_method: :delete, turbo_confirm: t('defaults.message.deleted_confirm', item: Comment.model_name.human) } do %>
                 <i class="fa-solid fa-trash"></i>
               <% end %>
             </div>
