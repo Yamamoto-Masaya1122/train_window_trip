@@ -2,7 +2,7 @@ require 'csv'
 
 csv = CSV.read('db/fixtures/csv/line.csv', headers: true)
 csv.each.with_index(1) do |line, index|
-  Line.create! do |s|
+  Line.seed do |s|
     s.id = index
     s.name = line[0]
     s.description = line[1]
