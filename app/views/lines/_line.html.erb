@@ -1,16 +1,16 @@
 <div class="card w-96 bg-neutral-100 hover:bg-neutral-200 shadow-xl ml-10 mb-10">
   <figure><%= image_tag line.image %></figure>
-  <div class="card-body">
-    <h2 class="card-title link link-accent">
-      <%= link_to line.name, line_path(line) %>
-    </h2>
-    <div class="card-actions justify-end mt-12">
-      <i class="fa-solid fa-tag"></i>
-      <% line.categories.each do |category| %>
-        <div class="badge badge-outline bg-accent text-white text-sm sm:text-base">
-          <%= category.name %>
-        </div>
-      <% end %>
+  <%= link_to line_path(line) do %>
+    <div class="card-body">
+      <h2 class="card-title text-accent"><%= line.name %></h2>
+      <div class="card-actions justify-end mt-12">
+        <i class="fa-solid fa-tag"></i>
+        <% line.categories.each do |category| %>
+          <div class="badge badge-outline bg-accent text-white text-sm sm:text-base">
+            <%= category.name %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
