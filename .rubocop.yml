@@ -20,10 +20,6 @@ AllCops:
     - 'config/puma.rb'
     - 'config/initializers/*'
 
-Metrics/MethodLength:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-
 Style/FrozenStringLiteralComment:
   Enabled: false
 
@@ -39,7 +35,5 @@ Style/RedundantSelf:
 Style/HashSyntax:
   Enabled: false
 
-
-#差し当たり
 Rails/I18nLocaleTexts:
   Enabled: false
