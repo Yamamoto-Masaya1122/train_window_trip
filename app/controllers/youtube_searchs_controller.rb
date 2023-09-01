@@ -8,10 +8,10 @@ class YoutubeSearchsController < ApplicationController
     @youtube_data = find_videos(@line.name)
   end
   
-  def find_videos(keyword, after: 4.years.ago, before: Time.now)
+  def find_videos(keyword, after: 4.years.ago, before: Time.zone.now)
     service = Google::Apis::YoutubeV3::YouTubeService.new
     # Herokuにデプロイする用
-    service.key = ENV['api_key']
+    service.key = ENV.fetch('api_key', nil)
     # キーワードがタイトルと完全一致する動画のみを表示するために使う
     @keyword = keyword
     

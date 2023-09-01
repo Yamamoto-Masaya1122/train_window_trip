@@ -1,0 +1,39 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  DisplayCopNames: true
+  Exclude:
+    - 'test/**/*'
+    - 'Gemfile'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'log/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'config/environments/*'
+    - 'config/puma.rb'
+    - 'config/initializers/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false

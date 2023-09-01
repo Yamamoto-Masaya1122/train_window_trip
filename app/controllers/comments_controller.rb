@@ -1,5 +1,14 @@
 class CommentsController < ApplicationController
 
+  def edit
+    @commentable = find_commentable
+    @comment = current_user.comments.find(params[:id])
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace(dom_id(@comment), partial: 'comments/form', locals: { comment: @comment }) }
+      format.html
+    end
+  end
+
   def create
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)
@@ -26,25 +35,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-    @comment = current_user.comments.find(params[:id])
-    @comment.destroy
-    respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.remove(@comment) }
-        format.js
-        format.html { redirect_to @comment.commentable, flash: { success: t('defaults.message.destroyed', item: Comment.model_name.human) } }
-    end
-  end
-
-  def edit
-    @commentable = find_commentable
-    @comment = current_user.comments.find(params[:id])
-    respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace(dom_id(@comment), partial: 'comments/form', locals: { comment: @comment }) }
-      format.html
-    end
-  end
-
   def update
     @comment = current_user.comments.find(params[:id])
     respond_to do |format|
@@ -65,6 +55,16 @@ class CommentsController < ApplicationController
                       flash: { danger: t('defaults.message.not_updated', item: Comment.model_name.human) }
         end
       end
+    end
+  end
+
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+    @comment.destroy
+    respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.remove(@comment) }
+        format.js
+        format.html { redirect_to @comment.commentable, flash: { success: t('defaults.message.destroyed', item: Comment.model_name.human) } }
     end
   end
 
