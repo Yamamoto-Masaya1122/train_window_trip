@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   root 'static_pages#top'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
   resources :youtube_searchs, only: [:index]
   resource :profile, only: [:show, :edit, :update]
   resources :lines, only: %i[index show] do
-    resources :comments, only: %i[create edit update destroy]
+    resources :comments
     collection do
       get :update_lines_options
     end
