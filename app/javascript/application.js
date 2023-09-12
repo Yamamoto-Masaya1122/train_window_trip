@@ -2,6 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@fortawesome/fontawesome-free"
+import "channels"
 
 // Turbo フレームが読み込まれた際にファンクションが実行される
 document.addEventListener("turbo:load", function() {
