@@ -1,19 +1,30 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create("LineChannel", {
-  connected() {
-    // Called when the subscription is ready for use on the server
-  },
+document.addEventListener("turbo:load", () => {
+  const comments = document.getElementById('comments');
+  if (comments === null) {
+    return;
+  }
+  const lineId = comments.dataset.lineId;
+  const appLine = consumer.subscriptions.create({channel: "LineChannel", line_id: lineId}, {
+    received(data) {
+      const element = document.querySelector('#comments')
+      element.insertAdjacentHTML('beforeend', data['comment'])
+    },
+  
+    speak: function(comment, lineId) {
+      return this.perform('speak', {comment: comment, line_id: lineId});
+    }
+  });
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
-
-  received(data) {
-    // Called when there's incoming data on the websocket for this channel
-  },
-
-  speak: function() {
-    return this.perform('speak');
+  const input = document.getElementById('line_input');
+  if(input) {
+    input.addEventListener("keypress", function(e) {
+      if (e.key === 'Enter') {
+        appLine.speak(e.target.value, lineId);
+        e.target.value = '';
+        e.preventDefault();
+      }
+    });
   }
 });

@@ -3,14 +3,13 @@ class LinesController < ApplicationController
 
   def index
     @line = Line.ransack(params[:q])
-    @lines = @line.result(distinct: true)
+    @lines = @line.result(distinct: true).includes(:categories).order(created_at: :desc)
   end
 
   def show
     @line = Line.find(params[:id])
     @comment = Comment.new
-    @comments = @line.comments.includes(:user).order(created_at: :desc)
-    @commentable = @line
+    @comments = @line.comments.includes(:user).order(created_at: :asc)
   end
 
   def update_lines_options

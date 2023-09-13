@@ -35,12 +35,12 @@
     </table>
   </div>
 
-  <!-- コメントフォーム -->
-  <% if logged_in? %>
-    <%= render 'comments/form', { commentable: @line, comment: @comment } %>
-  <% else %>
-    <div class='p-3.5 text-red-600'>※ログインしないとコメントは投稿できません</div>
-  <% end %>
-  <!-- コメント一覧 -->
-  <%= render 'comments/comments', { comments: @comments } %>
+  <h1>Chat room</h1>
+  <div data-line-id="<%= @line.id %>" id="comments">
+    <%= render @comments %>
+  </div>
+  <form>
+    <label>Say something:</label><br>
+    <input type="text" data-behavior="line_speaker" id="line_input" class="block w-full cursor-auto rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+  </form>
 </div>
