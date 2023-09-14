@@ -9,19 +9,11 @@ class LineChannel < ApplicationCable::Channel
 
   def speak(data)
     line = Line.find(data['line_id'])
-    comment = line.comments.create!(body: data["comment"], user_id: current_user.id)
-    
-    LineChannel.broadcast_to(
-      line, { comment: render_comment(comment) }
-    )
-  end
+    body = data['comment'].strip # メッセージの前後の空白を削除
+    return unless body.present? # メッセージが空でないことを確認
 
-  private
-  
-  def render_comment(comment)
-    ApplicationController.render(
-      partial: "comments/comment",
-      locals: { comment: comment }
-    )
+    # メッセージの作成だけ行い、ブロードキャストは after_commit フックに任せる
+    comment = line.comments.create!(body:, user_id: current_user.id)
+    sleep(0.1)
   end
 end
