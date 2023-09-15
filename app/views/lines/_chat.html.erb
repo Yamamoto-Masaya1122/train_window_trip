@@ -1,0 +1,49 @@
+<% if logged_in? %>
+<!-- チャットルームはログインしてない人でもみれるようにしたい。投稿のみログインが要る仕様 -->
+  <body data-current-user-id="<%= current_user.id %>">
+    <div class="mx-4">
+      <h1 class="text-2xl sm:text-3xl font-extrabold leading-normal mt-16 mb-6 mx-2 text-center">チャットルーム</h1>
+      <div class="flex justify-center">
+        <div class="card w-3/4 bg-slate-100" style="max-height: 712px; min-height: 712px;">
+          <div data-line-id="<%= @line.id %>" id="comments">
+            <% @comments.each do |comment| %>
+              <% if comment.user_id == current_user.id %>
+                <!-- 自分のコメント -->
+                <div class="comment-own align-items-start flex justify-end my-3" data-user-id="<%= comment.user_id %>">
+                  <div class="pe-2 me-1" style="max-width: 348px;">
+                    <div class="bg-indigo-400 bg-gradient p-3 mb-1" style="border-top-left-radius: .5rem; border-bottom-right-radius: .5rem; border-bottom-left-radius: .5rem;"><%= comment.body %></div>
+                    <div class="flex justify-end">
+                      <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+                    </div>
+                  </div>
+                </div>
+              <% else %>
+                <!-- 他人のコメント -->
+                <div class="comment-others d-flex align-items-start my-3 flex justify-start" data-user-id="<%= comment.user_id %>">
+                  <div class="mx-3">
+                    <%= comment.user.name %>
+                  </div>
+                  <div class="mb-3 mx-1" style="max-width: 348px;">
+                    <div class="bg-blue-100 p-3 mb-1" style="border-top-right-radius: .5rem; border-bottom-right-radius: .5rem; border-bottom-left-radius: .5rem;"><%= comment.body %></div>
+                    <div class="flex justify-start">
+                      <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <!-- 入力フォーム -->
+          <footer class="footer absolute bottom-0 border-0 pt-3 pb-3 px-4">
+            <div class="input-group">
+              <input type="text" data-behavior="line_speaker" id="line_input" class="block w-full cursor-auto rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <button id="submit_button" class="btn btn-accent btn-icon btn-lg d-sm-inline-flex ms-1">
+                <i class="fa-solid fa-caret-down"></i>
+              </button>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </body>
+<% end %>
