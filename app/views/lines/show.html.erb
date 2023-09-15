@@ -1,83 +1,13 @@
-<div class="mx-auto pb-12 grid grid-cols-2">
+<% if logged_in? %>
+  <div class="mx-auto pb-12 grid grid-cols-2">
   <!-- チャットルーム -->
-  <body data-current-user-id="<%= current_user.id %>">
-    <div class="mx-4">
-      <h1 class="text-2xl sm:text-3xl font-extrabold leading-normal mt-16 mb-6 mx-2 text-center">チャットルーム</h1>
-      <div class="flex justify-center">
-        <div class="card w-3/4 bg-slate-100" style="max-height: 712px; min-height: 712px;">
-          <div data-line-id="<%= @line.id %>" id="comments">
-            <% @comments.each do |comment| %>
-              <% if comment.user_id == current_user.id %>
-                <!-- Own comment -->
-                <div class="comment-own align-items-start flex justify-end my-3" data-user-id="<%= comment.user_id %>">
-                  <div class="pe-2 me-1" style="max-width: 348px;">
-                    <div class="bg-indigo-400 bg-gradient p-3 mb-1" style="border-top-left-radius: .5rem; border-bottom-right-radius: .5rem; border-bottom-left-radius: .5rem;"><%= comment.body %></div>
-                    <div class="d-flex justify-content-end align-items-center fs-sm text-muted">
-                      <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
-                    </div>
-                  </div>
-                </div>
-              <% else %>
-                <!-- comment from others -->
-                <div class="comment-others d-flex align-items-start my-3" data-user-id="<%= comment.user_id %>">
-                  <%= comment.user.name %>
-                  <div class="ps-2 ms-1" style="max-width: 348px;">
-                    <div class="bg-blue-100 p-3 mb-1" style="border-top-right-radius: .5rem; border-bottom-right-radius: .5rem; border-bottom-left-radius: .5rem;"><%= comment.body %></div>
-                    <div class="fs-sm text-muted">
-                      <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-          <footer class="footer absolute bottom-0 border-0 pt-3 pb-3 px-4">
-            <div class="input-group">
-              <input type="text" data-behavior="line_speaker" id="line_input" class="block w-full cursor-auto rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-              <button id="submit_button" class="btn btn-accent btn-icon btn-lg d-sm-inline-flex ms-1">
-                <i class="fa-solid fa-caret-down"></i>
-              </button>
-            </div>
-          </footer>
-        </div>
-      </div>
-    </div>
-  </body>
-
-
-  <!-- 路線内容 -->
-  <div class="mx-4">
-    <h1 class="text-2xl sm:text-3xl font-extrabold leading-normal mt-16 mb-6 mx-2 text-center"><%= @line.name %></h1>
-    <div class="flex justify-center">
-      <%= image_tag @line.image, class: "w-3/5" %>
-    </div>
-    <div class="flex items-center justify-center my-7">
-      <%= link_to (t 'defaults.top_button'), root_path, class: 'inline-flex items-center text-white bg-gray-500 hover:bg-gray-600 focus:ring-gray-500 focus:ring-offset-gray-500 rounded-lg px-4 py-2 mr-8 font-semibold' %>
-      <%= link_to (t 'lines.show.search_button'), youtube_searchs_path(id: @line.id), class: 'cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg' %>
-    </div>
-    <table class="mb-8 font-light table-border w-full">
-      <tbody class="w-11/12 m-auto">
-        <tr>
-          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Line.human_attribute_name(:description) %></td>
-          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed"><%= @line.description %></td>
-        <tr>
-        <tr>
-          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Line.human_attribute_name(:line_url) %></td>
-          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed link link-accent"><%= link_to @line.line_url, @line.line_url %></td>
-        <tr>
-        <tr>
-          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Line.human_attribute_name(:recommended_train_window_spot) %></td>
-          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed"><%= @line.recommended_train_window_spot %></td>
-        <tr>
-        <tr>
-          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Category.human_attribute_name(:name) %></td>
-          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed">
-            <% @line.categories.each do |category| %>
-              <p class="mx-1 badge badge-outline bg-accent text-white text-sm sm:text-base"><%= category.name %></p>
-            <% end %>
-          </td>
-        <tr>
-      </tbody>
-    </table>
+    <%= render 'chat', line: @line %>
+  <!-- 路線詳細情報 -->
+    <%= render 'line_detail', line: @line %>
   </div>
-</div>
+<% else %>
+  <!-- 路線詳細情報 -->
+  <div class="max-w-screen-md mx-auto pb-12">
+    <%= render 'line_detail', line: @line %>
+  </div>
+<% end %>
