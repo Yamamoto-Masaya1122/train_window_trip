@@ -10,7 +10,6 @@ document.addEventListener("turbo:load", () => {
   const appLine = consumer.subscriptions.create({channel: "LineChannel", line_id: lineId}, {
     received(data) {
       let commentHtml;
-      debugger;
       if (data.sender_id.toString() === currentUserId) {
         commentHtml = data.comment;
       } else {
