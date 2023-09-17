@@ -1,0 +1,12 @@
+<% comment = local_assigns[:comment] %>
+<div class="my-3 flex justify-start">
+  <div class="mx-3">
+    <%= comment.user.name %>
+  </div>
+  <div class="mb-3 mx-1" style="max-width: 348px;">
+    <div class="bg-neutral-50 p-3 mb-1" style="border-top-right-radius: .5rem; border-bottom-right-radius: .5rem; border-bottom-left-radius: .5rem;"><%= comment.body %></div>
+    <div class="flex justify-start">
+      <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+    </div>
+  </div>
+</div>
