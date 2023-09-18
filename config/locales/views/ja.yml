@@ -55,7 +55,7 @@ ja:
       title: 'プロフィール編集'
   lines:
     index:
-      title: '検索結果'
+      title: '路線を探す'
     show:
       search_button: '車窓動画を見る'
   password_resets:

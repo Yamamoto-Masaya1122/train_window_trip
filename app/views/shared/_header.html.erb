@@ -4,6 +4,7 @@
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal text-white">
+      <li><%= link_to (t 'lines.index.title'), lines_path %></li>
       <li><%= link_to (t 'profiles.show.title'), profile_path %></li>
       <li><%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete } %></li>
     </ul>
