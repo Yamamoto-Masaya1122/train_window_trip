@@ -4,7 +4,7 @@ class LinesController < ApplicationController
 
   def index
     @line = Line.ransack(params[:q])
-    @lines = @line.result(distinct: true).includes(:categories).order(created_at: :desc)
+    @lines = @line.result(distinct: true).includes(:categories).order(created_at: :desc).page(params[:page])
   end
 
   def show
