@@ -1,7 +1,7 @@
 <div class="top-wrapper">
   <div class="top-inner-text">
     <h1 class="mb-10">Train Window Trip</h1>
-    <%= link_to '車窓の旅に出かける！', lines_path, class: 'cursor-pointer py-2 px-4  bg-white hover:bg-gray-200 text-rose-500 text-center text-base font-semibold shadow-md   border-2 border-rose-500 rounded-full' %>
+    <%= link_to '車窓の旅に出かける！', lines_path, class: 'cursor-pointer py-3 px-7 bg-white hover:bg-gray-200 text-rose-500 text-center text-base font-semibold shadow-md border border-rose-500 rounded-full' %>
   </div>
 </div>
 <!-- 使い方 -->
@@ -38,38 +38,6 @@
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
           </svg>
         </a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="mx-auto px-1 py-3 sm:px-1 max-w-3xl text-center">
-  <!-- 検索フォーム -->
-  <div class="p-3.5">
-    <div class="artboard-demo bg-secondary-focus sm:col-span-2 p-3.5 items-center text-center">
-      <h2 class="text-center font-bold font-serif text-xl mt-5"><%= (t 'static_pages.top.prefecture') %></h2>
-      <div class="sm:col-span-2 p-3.5">
-        <%= search_form_for @line do |f| %>
-          <div class="p-3.5 inline-flex">
-            <%# 都道府県検索 %>
-            <%= f.collection_select(:prefecture_lines_prefecture_id_eq, @prefectures, :id, :name, { include_blank: "都道府県を選択" }, { class: "select select-bordered max-w-xs", id: "prefecture-select" }) %>
-            <%# 路線検索 %>
-            <%= f.collection_select(:id_eq, @lines, :id, :name, { include_blank: "路線名を選択" }, { class: "select select-bordered max-w-xs pl-8 ml-4", id: "line-select" }) %>
-            <button class="text-white bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 rounded-lg px-4 py-2 ml-4">
-              <%= f.submit (t 'defaults.search') %>
-            </button>
-          </div>
-        <% end %>
-        <h2 class="text-center font-bold font-serif text-xl mt-8 mb-4"><%= (t 'static_pages.top.category') %></h2>
-        <%# カテゴリ検索 %>
-        <%= search_form_for @line do |f| %>
-          <% Category.all.each do |category| %>
-            <%= f.check_box :line_categories_category_id_eq_any, { multiple: true, checked: category[:checked], disabled: category[:disabled], include_hidden: false, class: 'checkbox checkbox-accent' }, category[:id] %>
-            <%= f.label :line_categories_category_id_eq_any, category.name, { class: 'font-bold font-serif text-lg' }, value: category[:id] %>
-          <% end %>
-          <button class="text-white bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 rounded-lg px-4 py-2 ml-4">
-            <%= f.submit (t 'defaults.search') %>
-          </button>
-        <% end %>
       </div>
     </div>
   </div>

@@ -1,4 +1,5 @@
 class LinesController < ApplicationController
+  before_action :set_prefecture, only: %i[index]
   skip_before_action :require_login, only: %i[index show update_lines_options]
 
   def index
@@ -19,5 +20,12 @@ class LinesController < ApplicationController
                 .order(:name)
 
     render json: { lines: lines }
+  end
+
+  private
+
+  def set_prefecture
+    @prefecture = Prefecture.ransack(params[:q])
+    @prefectures = @prefecture.result
   end
 end
