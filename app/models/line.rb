@@ -4,6 +4,8 @@ class Line < ApplicationRecord
   has_many :line_categories, dependent: :destroy
   has_many :categories, through: :line_categories
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :users, through: :likes 
   
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "id", "image", "line_url", "name", "recommended_train_window_spot", "updated_at"]
