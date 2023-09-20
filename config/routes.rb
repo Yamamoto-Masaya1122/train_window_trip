@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resource :profile, only: [:show, :edit, :update]
   resources :lines, only: %i[index show] do
     resources :comments
+    resources :likes, only: %i[create destroy]
     collection do
       get :update_lines_options
     end
