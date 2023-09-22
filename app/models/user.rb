@@ -10,4 +10,16 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
+
+  def unlikes_line(line)
+    lines.destroy(line)
+  end
+
+  def line_like(line)
+    lines << line
+  end
+
+  def liked_by?(line)
+    lines.include?(line)
+  end
 end
