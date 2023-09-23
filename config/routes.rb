@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
-  resources :users, only: [:new, :create]
-  resources :youtube_searchs, only: [:index]
-  resource :profile, only: [:show, :edit, :update]
+  resources :users, only: %i[new create]
+  resources :likes, only: %i[create destroy]
+  resources :youtube_searchs, only: %i[index]
+  resource :profile, only: %i[show edit update]
   resources :lines, only: %i[index show] do
     resources :comments
     collection do

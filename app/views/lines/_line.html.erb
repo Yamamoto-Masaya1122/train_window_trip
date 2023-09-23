@@ -2,7 +2,12 @@
   <figure><%= image_tag line.image %></figure>
   <%= link_to line_path(line) do %>
     <div class="card-body">
-      <h2 class="card-title text-accent"><%= line.name %></h2>
+      <div class="flex">
+        <h2 class="card-title text-accent"><%= line.name %></h2>
+        <% if logged_in?%>
+          <%= render 'likes/index_like_button', line: %>
+        <% end %>
+      </div>
       <div class="card-actions justify-end mt-12">
         <i class="fa-solid fa-tag"></i>
         <% line.categories.each do |category| %>

@@ -11,3 +11,10 @@
     </button>
   </div>
 </div>
+<div class="flex justify-center text-3xl mt-28 mb-8">お気に入りの路線</div>
+<div class="flex justify-center">
+  <hr class="border-t-2 border-gray-10 w-10/12 mb-12">
+</div>
+<div class="pb-12 flex flex-row flex-wrap justify-center">
+  <%= render partial: 'lines/line', collection: @line_likes, as: "line" %>
+</div>
