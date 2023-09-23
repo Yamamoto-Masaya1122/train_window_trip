@@ -1,0 +1,10 @@
+<!--- like -->
+<% if current_user.liked_by?(line) %>
+  <%= link_to like_path(line), data: { turbo_method: :delete }, class: "ml-4" do %>
+    <button class="px-2 py-1 text-lg text-red-500 bg-red-100 border border-red-500 font-semibold rounded"><i class="fa-solid fa-heart text-secondary"></i></button>
+  <% end %>
+<% else %>
+  <%= link_to likes_path(line_id: line.id), data: { turbo_method: :post } , class: "ml-4" do %>
+    <button class="px-2 py-1 text-lg text-red-500 bg-red-100 border border-red-500 font-semibold rounded"><i class="fa-solid fa-heart text-white"></i></button>
+  <% end %>
+<% end %>

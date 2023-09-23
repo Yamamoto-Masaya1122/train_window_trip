@@ -5,7 +5,7 @@
       <div class="flex">
         <h2 class="card-title text-accent"><%= line.name %></h2>
         <% if logged_in?%>
-          <%= render 'likes/like_button', line: %>
+          <%= render 'likes/index_like_button', line: %>
         <% end %>
       </div>
       <div class="card-actions justify-end mt-12">
