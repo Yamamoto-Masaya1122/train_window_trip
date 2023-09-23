@@ -1,7 +1,9 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: %i[edit update]
+  before_action :set_user, only: %i[show edit update]
 
-  def show; end
+  def show
+    @line_likes = @user.lines
+  end
 
   def edit; end
 

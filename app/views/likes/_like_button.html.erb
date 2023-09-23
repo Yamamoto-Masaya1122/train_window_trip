@@ -1,10 +1,10 @@
 <!--- like -->
 <% if current_user.liked_by?(line) %>
-  <%= link_to like_path(line), data: { turbo_method: :delete }, class: "btn btn-inline btn-danger ml-4" do %>
+  <%= link_to like_path(line), data: { turbo_method: :delete }, class: "ml-4" do %>
     <i class="fa-solid fa-heart text-secondary"></i>
   <% end %>
 <% else %>
-  <%= link_to likes_path(line_id: line.id), data: { turbo_method: :post } ,class: "btn btn-outline btn-outline-danger ml-4" do %>
+  <%= link_to likes_path(line_id: line.id), data: { turbo_method: :post } , class: "ml-4" do %>
     <i class="fa-solid fa-heart text-gray-300"></i>
   <% end %>
 <% end %>
