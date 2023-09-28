@@ -1,0 +1,41 @@
+<!-- YouTube Video Modal -->
+<div id="youtubeModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+  <div class="bg-white rounded shadow-lg w-11/12 md:w-3/4 lg:w-2/3">
+    <div class="relative">
+      <iframe id="youtubeFrame" class="w-full" height="700" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <button id="closeModal" class="absolute top-0 right-0 bg-red-500 text-white p-2 m-2 rounded-full">&times;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("turbo:load", function() {
+    const modal = document.getElementById("youtubeModal");
+    const iframe = document.getElementById("youtubeFrame");
+    const closeBtn = document.getElementById("closeModal");
+        
+    document.querySelectorAll('.youtube-thumbnail').forEach(video => {
+      video.addEventListener('click', function() {
+        const videoId = this.getAttribute('data-video-id');
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        modal.style.display = "flex";
+        document.body.classList.add('modal-open'); // 追加
+      });
+    });
+        
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = "none";
+      iframe.src = ""; // 動画の再生を停止
+      document.body.classList.remove('modal-open'); // 追加
+    });
+
+    modal.addEventListener('click', function(event) {
+      // イベントのターゲットがモーダルの背景である場合のみモーダルを閉じる
+      if (event.target === modal) {
+          modal.style.display = "none";
+          iframe.src = ""; // 動画の再生を停止
+          document.body.classList.remove('modal-open'); 
+      }
+    });
+  });
+</script>
