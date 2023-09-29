@@ -4,15 +4,12 @@
     <iframe id="youtubeFrame" class="w-full" height="700" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
   <div class="w-full text-center mt-4 flex justify-center">
-    <button id="changeBackground" class="bg-slate-300 text-black p-2 rounded-full w-10 h-10 flex items-center justify-center">
+    <button id="changeBackground" class="bg-slate-300 text-black p-2 rounded-full w-10 h-10 flex items-center justify-center transform transition-transform duration-200 hover:scale-110">
       <i class="fa-solid fa-image"></i>
     </button>
   </div>
-  <button id="closeModal" class="fixed top-4 right-4 z-60 bg-slate-300 text-black mt-6 mr-48 p-2 w-10 h-10 flex items-center justify-center rounded-full">&times;</button>
+  <button id="closeModal" class="fixed top-4 right-4 z-60 bg-slate-300 text-black mt-6 mr-48 p-2 w-10 h-10 flex items-center justify-center rounded-full transform transition-transform duration-200 hover:scale-110">&times;</button>
 </div>
-
-
-
 <!-- Background Change Popup -->
 <div id="backgroundPopup" class="fixed inset-0 z-60 flex items-center justify-center hidden">
   <div class="bg-white rounded shadow-lg w-[700px] h-500px overflow-auto p-4">
