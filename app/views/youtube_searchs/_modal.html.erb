@@ -1,9 +1,62 @@
 <!-- YouTube Video Modal -->
-<div id="youtubeModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-  <div class="bg-white rounded shadow-lg w-11/12 md:w-3/4 lg:w-2/3">
-    <div class="relative">
+<div id="youtubeModal" class="fixed inset-0 z-50 flex flex-col items-center justify-center hidden">
+  <div class="bg-white rounded shadow-lg w-11/12 md:w-3/4 lg:w-2/3 flex flex-col items-center">
+    <div class="relative w-full">
+      <button id="closeModal" class="absolute top-0 right-0 bg-red-500 text-white p-2 rounded-full">&times;</button>
       <iframe id="youtubeFrame" class="w-full" height="700" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <button id="closeModal" class="absolute top-0 right-0 bg-red-500 text-white p-2 m-2 rounded-full">&times;</button>
+    </div>
+  </div>
+  <div class="w-full text-center mt-4 flex justify-center">
+    <button id="changeBackground" class="bg-slate-300 text-black p-2 rounded-full w-10 h-10 flex items-center justify-center">
+      <i class="fa-solid fa-image"></i>
+    </button>
+  </div>
+</div>
+
+
+
+<!-- Background Change Popup -->
+<div id="backgroundPopup" class="fixed inset-0 z-60 flex items-center justify-center hidden">
+  <div class="bg-white rounded shadow-lg w-[700px] h-500px overflow-auto p-4">
+    <h2>画像を選択し「変更する」ボタンを押すと背景を変更できます！</h2>
+    <div class="flex flex-wrap gap-4">
+      <!-- サンプルの背景画像 -->
+      <div class="image-wrapper">
+        <span class="image-name flex items-center justify-center">川</span>
+        <%= image_tag "river_00008.jpg", alt: "testimonial", width: 150, height: 60, class: "background-option", data: { background: image_path("river_00007.jpg")} %>
+      </div>
+      <div class="image-wrapper">
+        <span class="image-name flex items-center justify-center">山</span>
+        <%= image_tag "mountain_00009.jpg", alt: "testimonial", width: 150, height: 60, class: "background-option", data: { background: image_path("mountain_000010.jpg")} %>
+      </div>
+      <div class="image-wrapper">
+        <span class="image-name flex items-center justify-center">紅葉</span>
+        <%= image_tag "river_00033.jpg", alt: "testimonial", width: 150, height: 60, class: "background-option", data: { background: image_path("river_00034.jpg")} %>
+      </div>
+      <div class="image-wrapper">
+        <span class="image-name flex items-center justify-center">湿原</span>
+        <%= image_tag "tree-woods_00020.jpg", alt: "testimonial", width: 150, height: 60, class: "background-option", data: { background: image_path("tree-woods_00021.jpg")} %>
+      </div>
+      <div class="image-wrapper">
+        <span class="image-name flex items-center justify-center">雪</span>
+        <%= image_tag "white_00117.jpg", alt: "testimonial", width: 150, height: 60, class: "background-option", data: { background: image_path("white_00118.jpg")} %>
+      </div>
+      <div class="image-wrapper">
+        <span class="image-name flex items-center justify-center">海</span>
+        <%= image_tag "sky_00012.jpg", alt: "testimonial", width: 150, height: 60, class: "background-option", data: { background: image_path("sky_00013.jpg")} %>
+      </div>
+      <div class="image-wrapper">
+        <span class="image-name flex items-center justify-center">桜</span>
+        <%= image_tag "cherry-blossom_00006.jpg", alt: "testimonial", width: 150, height: 60, class: "background-option", data: { background: image_path("cherry-blossom_00007.jpg")} %>
+      </div>
+      <div class="image-wrapper">
+        <span class="image-name flex items-center justify-center">夜景</span>
+        <%= image_tag "black_background_01.png", alt: "testimonial", width: 150, height: 60, class: "background-option", data: { background: image_path("black_background_02.png")} %>
+      </div>
+    </div>
+    <div class="mt-4 flex justify-between">
+        <button id="cancelButton" class="bg-gray-500 text-white px-4 py-2 rounded">閉じる</button>
+        <button id="changeBackgroundButton" class="bg-blue-500 text-white px-4 py-2 rounded">変更する</button>
     </div>
   </div>
 </div>
@@ -13,29 +66,56 @@
     const modal = document.getElementById("youtubeModal");
     const iframe = document.getElementById("youtubeFrame");
     const closeBtn = document.getElementById("closeModal");
-        
+    const backgroundPopup = document.getElementById("backgroundPopup");
+    const changeBackgroundBtn = document.getElementById("changeBackground");
+    const applyBackgroundBtn = document.getElementById("changeBackgroundButton");
+    const cancelButton = document.getElementById("cancelButton");
+    let selectedBackground = null;
+
     document.querySelectorAll('.youtube-thumbnail').forEach(video => {
-      video.addEventListener('click', function() {
-        const videoId = this.getAttribute('data-video-id');
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-        modal.style.display = "flex";
-        document.body.classList.add('modal-open'); // 追加
-      });
+        video.addEventListener('click', function() {
+            const videoId = this.getAttribute('data-video-id');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            modal.style.display = "flex";
+        });
     });
-        
+
     closeBtn.addEventListener('click', function() {
-      modal.style.display = "none";
-      iframe.src = ""; // 動画の再生を停止
-      document.body.classList.remove('modal-open'); // 追加
+        modal.style.display = "none";
+        iframe.src = ""; // 動画の再生を停止
     });
 
     modal.addEventListener('click', function(event) {
-      // イベントのターゲットがモーダルの背景である場合のみモーダルを閉じる
-      if (event.target === modal) {
-          modal.style.display = "none";
-          iframe.src = ""; // 動画の再生を停止
-          document.body.classList.remove('modal-open'); 
-      }
+        if (event.target === modal) {
+            modal.style.display = "none";
+            iframe.src = ""; // 動画の再生を停止
+        }
+    });
+
+    changeBackgroundBtn.addEventListener('click', function() {
+        backgroundPopup.style.display = "flex";
+    });
+
+    document.querySelectorAll('.background-option').forEach(img => {
+        img.addEventListener('click', function() {
+            // 他の画像の選択状態を解除
+            document.querySelectorAll('.background-option').forEach(innerImg => {
+                innerImg.classList.remove('background-selected');
+            });
+            this.classList.add('background-selected');
+            selectedBackground = this.getAttribute('data-background');
+        });
+    });
+
+    applyBackgroundBtn.addEventListener('click', function() {
+        if (selectedBackground) {
+            modal.style.backgroundImage = `url(${selectedBackground})`;
+        }
+        backgroundPopup.style.display = "none";
+    });
+
+    cancelButton.addEventListener('click', function() {
+        backgroundPopup.style.display = "none"; // ポップアップを閉じる
     });
   });
 </script>
