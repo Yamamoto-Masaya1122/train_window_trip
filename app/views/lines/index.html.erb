@@ -1,23 +1,24 @@
 <div class="mx-auto px-1 py-3 sm:px-1 max-w-3xl text-center">
   <!-- 検索フォーム -->
   <div class="p-3.5">
+    <h2 class="text-center font-bold font-serif text-xl mt-5">フリーワード検索</h2>
     <%= search_form_for @line, url: lines_path do |f| %>
-      <div class="flex items-center">
+      <div class="p-3.5 inline-flex">
         <div data-controller="autocomplete" data-autocomplete-url-value="/lines/search" role="combobox">
           <%= f.search_field :name_cont,
                               data: { autocomplete_target: 'input' },
-                              class:"block p-3 mt-3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 											 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", 
-                              placeholder:"路線名を入力してください" %>
+                              class:"w-80 block p-3 mt-3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", 
+                              placeholder: "路線名を入力してください" %>
           <%= f.hidden_field :name, data: { autocomplete_target: 'hidden' } %>
           <ul class="list-group bg-white absolute w-full md:text-sm max-w-max" data-autocomplete-target="results"></ul>
         </div>
-        <button class="text-white bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 rounded-lg px-4 py-2 ml-4">
+        <button class="h-12 mt-2.5 text-white bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 rounded-lg px-4 py-2 ml-4">
           <%= f.submit (t 'defaults.search') %>
         </button>
       </div>
     <% end %>
     <h2 class="text-center font-bold font-serif text-xl mt-5"><%= (t 'static_pages.top.prefecture') %></h2>
-    <div class="sm:col-span-2 p-3.5">
+    <div class="p-3.5">
       <%= search_form_for @line do |f| %>
         <div class="p-3.5 inline-flex">
           <!-- 都道府県検索 -->
