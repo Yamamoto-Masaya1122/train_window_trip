@@ -1,0 +1,5 @@
+<% @lines.each do |line| %>
+  <li class="list-group-item cursor-pointer hover:bg-gray-200 border-b-2 border-gray-200 p-2" role="option" data-autocomplete-value="<%= line.id %>" data-autocomplete-label="<%= line.name %>">
+    <%= line.name %>
+  </li>
+<% end %>
