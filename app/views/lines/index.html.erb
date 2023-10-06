@@ -19,6 +19,7 @@
         <%= f.submit "検索", class: "ml-4 py-3 px-4 inline-flex flex-shrink-0 justify-center items-center gap-2 rounded-lg border border-transparent font-semibold bg-accent text-white hover:bg-indigo-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-accent transition-all text-sm" %>
       </div>
     <% end %>
+    <!-- アコーディオンメニュー -->
     <div class="hs-accordion active" id="hs-basic-with-title-and-arrow-stretched-heading-one" data-controller="accordion">
       <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 group py-3 inline-flex items-center justify-between gap-x-3 font-semibold text-left text-gray-800 transition hover:text-gray-500 dark:hs-accordion-active:text-blue-500 dark:text-gray-200 dark:hover:text-gray-400" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one" data-action="click->accordion#toggle">
         検索オプション
@@ -59,13 +60,12 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
 <!-- 検索結果 -->
 <div class="flex justify-center">
   <hr class="border-t-2 border-gray-100 w-7/12 mb-12">
 </div>
-<div class="container flex items-center justify-center flex-1 h-full mx-auto">
+<div class="container mx-auto pb-12">
   <div class="pb-12 flex flex-row flex-wrap justify-center">
     <% if @lines.present? %>
       <%= render @lines %>
