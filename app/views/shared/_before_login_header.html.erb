@@ -4,7 +4,7 @@
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal text-white">
-      <li><%= link_to (t 'lines.index.title'), lines_path %></li>
+      <li><%= link_to (t 'lines.index.title'), lines_path, 'data-turbo': false %></li>
       <li><%= link_to (t 'users.new.title'), new_user_path %></li>
       <li><%= link_to (t 'defaults.login'), login_path %></li>
     </ul>
