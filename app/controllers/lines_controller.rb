@@ -1,6 +1,6 @@
 class LinesController < ApplicationController
   before_action :set_prefecture, only: %i[index]
-  skip_before_action :require_login, only: %i[index show update_lines_options]
+  skip_before_action :require_login, only: %i[index show update_lines_options search]
 
   def index
     @line = Line.ransack(params[:q])
@@ -20,6 +20,13 @@ class LinesController < ApplicationController
                 .order(:name)
 
     render json: { lines: lines }
+  end
+
+  def search
+    @lines = Line.where("name like ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

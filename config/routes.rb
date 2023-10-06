@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :comments
     collection do
       get :update_lines_options
+      get :search
     end
   end
 end
