@@ -4,3 +4,10 @@
 @import "chat";
 @import "youtube_modal";
 @import "accordion";
+
+/* オートコンプリートの候補はページ全体の一番上になる */
+ul[data-autocomplete-target="results"] {
+  z-index: 1000;
+  position: absolute;
+  width: 100%; 
+}
