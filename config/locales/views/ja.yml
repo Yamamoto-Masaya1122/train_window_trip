@@ -3,7 +3,6 @@ ja:
     login: 'ログイン'
     register: '会員登録する'
     logout: 'ログアウト'
-    edit: '編集'
     post: '投稿'
     cancel: 'キャンセル'
     profile_edit: 'プロフィール編集'
