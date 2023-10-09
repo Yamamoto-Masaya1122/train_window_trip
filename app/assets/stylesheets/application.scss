@@ -4,6 +4,7 @@
 @import "chat";
 @import "youtube_modal";
 @import "accordion";
+@import "profile";
 
 /* オートコンプリートの候補はページ全体の一番上になる */
 ul[data-autocomplete-target="results"] {
