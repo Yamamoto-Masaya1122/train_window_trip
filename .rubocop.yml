@@ -37,3 +37,7 @@ Style/HashSyntax:
 
 Rails/I18nLocaleTexts:
   Enabled: false
+
+# ％i（）構文を使用していないシンボルで構成される配列リテラルをチェック（無効）
+Style/SymbolArray:
+  Enabled: false
