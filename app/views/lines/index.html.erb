@@ -1,20 +1,22 @@
 <!-- 検索機能 -->
 <%= render 'search_form', line: @line %>
-<!-- 検索結果 -->
-<div class="flex justify-center">
-  <hr class="border-t-2 border-gray-100 w-7/12 mb-12">
-</div>
-<div class="container mx-auto pb-12">
-  <div class="pb-12 flex flex-row flex-wrap justify-center">
-    <% if @lines.present? %>
-      <%= render @lines %>
-    <% else %>
-      <div class="text-center">
-        <p class="text-md flex justify-center">該当する路線が見つかりませんでした。</p>
-      </div>
-    <% end %>
+<!-- 路線一覧 -->
+<%= turbo_frame_tag 'line-list' do %>
+  <div class="flex justify-center">
+    <hr class="border-t-2 border-gray-100 w-7/12 mb-12">
   </div>
-</div>
-<div class="join flex justify-center">
-  <%= paginate @lines %> 
-</div>
+  <div class="container mx-auto pb-12">
+    <div class="pb-12 flex flex-row flex-wrap justify-center">
+      <% if @lines.present? %>
+        <%= render @lines %>
+      <% else %>
+        <div class="text-center">
+          <p class="text-md flex justify-center">該当する路線が見つかりませんでした。</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="join flex justify-center">
+    <%= paginate @lines %> 
+  </div>
+<% end %>
