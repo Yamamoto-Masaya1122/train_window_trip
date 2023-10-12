@@ -9,9 +9,9 @@
     <!-- お気に入り登録-->
     <% if logged_in? %>
       <% if current_user.liked_by?(@line) %>
-        <%= render 'likes/show_like_button', line: @line %>
-      <% else %>
         <%= render 'likes/show_unlike_button', line: @line %>
+      <% else %>
+        <%= render 'likes/show_like_button', line: @line %>
       <% end %>
     <% end %>
   </div>
