@@ -8,7 +8,11 @@
     <%= link_to (t 'lines.show.search_button'), youtube_searchs_path(id: @line.id), class: 'cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg' %>
     <!-- お気に入り登録-->
     <% if logged_in? %>
-      <%= render 'likes/show_like_button', line: %>
+      <% if current_user.liked_by?(@line) %>
+        <%= render 'likes/show_unlike_button', line: @line %>
+      <% else %>
+        <%= render 'likes/show_like_button', line: @line %>
+      <% end %>
     <% end %>
   </div>
   <table class="mb-8 font-light table-border w-full">
