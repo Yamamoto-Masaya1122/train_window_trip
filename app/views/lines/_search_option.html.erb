@@ -12,7 +12,7 @@
     <div class="search-options p-3.5">
       <h2 class="text-center font-bold font-serif text-xl mt-5"><%= (t 'static_pages.top.prefecture') %></h2>
       <div class="p-3.5">
-        <%= search_form_for @line do |f| %>
+        <%= search_form_for @line, html: { data: { turbo_frame: 'line-list' }} do |f| %>
           <div class="p-3.5 inline-flex">
             <!-- 都道府県検索 -->
             <%= f.collection_select(:prefecture_lines_prefecture_id_eq, @prefectures, :id, :name, { include_blank: "都道府県を選択" }, { class: "select select-bordered max-w-xs", id: "prefecture-select" }) %>
@@ -25,7 +25,7 @@
         <% end %>
         <h2 class="text-center font-bold font-serif text-xl mt-8 mb-4"><%= (t 'static_pages.top.category') %></h2>
         <!-- カテゴリ検索 -->
-        <%= search_form_for @line do |f| %>
+        <%= search_form_for @line, html: { data: { turbo_frame: 'line-list' }} do |f| %>
           <% Category.all.each do |category| %>
             <%= f.check_box :line_categories_category_id_eq_any, { multiple: true, checked: category[:checked], disabled: category[:disabled], include_hidden: false, class: 'checkbox checkbox-accent' }, category[:id] %>
             <%= f.label :line_categories_category_id_eq_any, category.name, { class: 'font-bold font-serif text-lg' }, value: category[:id] %>

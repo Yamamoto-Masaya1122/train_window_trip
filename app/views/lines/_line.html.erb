@@ -1,26 +1,30 @@
 <div class="card w-96 bg-neutral-100 hover:bg-neutral-200 shadow-xl ml-10 mb-10">
   <figure><%= image_tag line.image %></figure>
-  <%= link_to line_path(line) do %>
-    <div class="card-body">
-      <div class="flex">
-        <h2 class="card-title text-accent"><%= line.name %></h2>
-        <!-- お気に入り登録-->
-        <% if logged_in? %>
+  <div class="card-body relative">
+    <div class="flex">
+      <div data-turbo="false">
+        <%= link_to line_path(line) do %>
+          <h2 class="card-title text-accent"><%= line.name %></h2>
+        <% end %>
+      </div>
+      <!-- お気に入り登録-->
+      <% if logged_in? %>
+        <div class="absolute top-8 right-8">
           <% if current_user.liked_by?(line) %>
             <%= render 'likes/index_unlike_button', line: line %>
           <% else %>
             <%= render 'likes/index_like_button', line: line %>
           <% end %>
-        <% end %>
-      </div>
-      <div class="card-actions justify-end mt-12">
-        <i class="fa-solid fa-tag"></i>
-        <% line.categories.each do |category| %>
-          <div class="badge badge-outline bg-accent text-white text-sm sm:text-base">
-            <%= category.name %>
-          </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+    <div class="card-actions justify-end mt-12">
+      <i class="fa-solid fa-tag"></i>
+      <% line.categories.each do |category| %>
+        <div class="badge badge-outline bg-accent text-white text-sm sm:text-base">
+          <%= category.name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
