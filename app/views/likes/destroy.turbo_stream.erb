@@ -1,0 +1,9 @@
+<!-- 路線一覧用-->
+<%= turbo_stream.replace "index_unlike-button-for-line-#{@line.id}" do %>
+  <%= render 'likes/index_like_button', line: @line %>
+<% end %>
+
+<!-- 路線詳細用-->
+<%= turbo_stream.replace "show_unlike-button-for-line-#{@line.id}" do %>
+  <%= render 'likes/show_like_button', line: @line %>
+<% end %>
