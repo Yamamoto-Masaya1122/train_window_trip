@@ -1,6 +1,6 @@
 <div class="card w-96 bg-neutral-100 hover:bg-neutral-200 shadow-xl ml-10 mb-10">
   <figure><%= image_tag line.image %></figure>
-  <div class="card-body">
+  <div class="card-body relative">
     <div class="flex">
       <div data-turbo="false">
         <%= link_to line_path(line) do %>
@@ -9,11 +9,13 @@
       </div>
       <!-- お気に入り登録-->
       <% if logged_in? %>
-        <% if current_user.liked_by?(line) %>
-          <%= render 'likes/index_unlike_button', line: line %>
-        <% else %>
-          <%= render 'likes/index_like_button', line: line %>
-        <% end %>
+        <div class="absolute top-8 right-8">
+          <% if current_user.liked_by?(line) %>
+            <%= render 'likes/index_unlike_button', line: line %>
+          <% else %>
+            <%= render 'likes/index_like_button', line: line %>
+          <% end %>
+        </div>
       <% end %>
     </div>
     <div class="card-actions justify-end mt-12">
