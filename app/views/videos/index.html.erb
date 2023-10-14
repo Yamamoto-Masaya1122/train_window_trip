@@ -10,14 +10,14 @@
 <div class="bg-white py-6 sm:py-8">
   <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
     <div class="grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-      <% @youtube_data.each do |item| %>
+      <% @response.each do |item| %>
         <%# タイトルにキーワードと前面展望を含んでいる動画だけを表示する %>
-        <% if item[:title].include?(@keyword) && item[:title].include?("前面展望")%>
+        <% if item[:title].include?(@line.name) && item[:title].include?("前面展望")%>
           <div class="flex flex-col group h-64 bg-gray-100 rounded-lg overflow-hidden shadow-lg relative cursor-pointer youtube-thumbnail" data-video-id="<%= item[:video_id] %>">
             <img src="<%= item[:thumbnail] %>" alt="<%= item[:title] %>" class="w-full h-full object-cover">
             <div><%= item[:view_count].to_fs(:delimited) %>回再生</div>
           </div>
-        <% elsif item[:description].include?(@keyword) && item[:description].include?("前面展望") %>
+        <% elsif item[:description].include?(@line.name) && item[:description].include?("前面展望") %>
           <div class="flex flex-col group h-64 bg-gray-100 rounded-lg overflow-hidden shadow-lg relative cursor-pointer youtube-thumbnail" data-video-id="<%= item[:video_id] %>">
             <img src="<%= item[:thumbnail] %>" alt="<%= item[:title] %>" class="w-full h-full object-cover">
             <div><%= item[:view_count].to_fs(:delimited) %>回再生</div>
