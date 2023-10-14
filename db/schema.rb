@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_09_134007) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_13_215921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -85,6 +85,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_134007) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "video_id", null: false
+    t.string "title", null: false
+    t.string "thumbnail", null: false
+    t.integer "view_count", null: false
+    t.datetime "published_at", null: false
+    t.bigint "line_id", null: false
+    t.text "description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["line_id"], name: "index_videos_on_line_id"
+  end
+
   add_foreign_key "comments", "lines"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "lines"
@@ -93,4 +106,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_09_134007) do
   add_foreign_key "line_categories", "lines"
   add_foreign_key "prefecture_lines", "lines"
   add_foreign_key "prefecture_lines", "prefectures"
+  add_foreign_key "videos", "lines"
 end
