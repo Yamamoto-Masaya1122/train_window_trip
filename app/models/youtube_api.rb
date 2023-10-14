@@ -13,7 +13,7 @@ module YoutubeApi
     search_results = service.list_searches(
       :snippet,
       type: "video",
-      q: keyword + " " +  "前面展望",
+      q: keyword + " " + "前面展望",
       max_results: 24,
       # HD 動画のみ
       video_definition: "high",
@@ -30,7 +30,7 @@ module YoutubeApi
 
     search_results.items.each_with_index do |item, index|
       video_id = search_results.items[index].id.video_id
-      #動画の再生回数を取得する
+      # 動画の再生回数を取得する
       video_results = service.list_videos(
         :statistics,
         id: video_id,
@@ -44,7 +44,7 @@ module YoutubeApi
       # { video_id・動画タイトル・概要・サムネ・再生回数 } を返す
       @youtube_data << { video_id: video_id, title: snippet.title, description: snippet.description, thumbnail: thumbnail, view_count: view_count, published_at: snippet.published_at }
     end
-    return @youtube_data
+    @youtube_data
   end
 
   # Youtube動画を保存

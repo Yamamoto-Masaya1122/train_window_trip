@@ -7,11 +7,13 @@ class VideosController < ApplicationController
     @line = Line.find(params[:id])
     @search_results = Video.where(line_id: @line.id)
     @response = []
-    
 
     if saved_and_recent?
       @search_results.each do |result|
-        @response << { video_id: result.video_id, title: result.title, description: result.description, thumbnail: result.thumbnail, view_count: result.view_count, published_at: result.published_at.strftime("%Y/%m/%d") }
+        @response << {
+          video_id: result.video_id, title: result.title, description: result.description,
+          thumbnail: result.thumbnail, view_count: result.view_count, published_at: result.published_at.strftime("%Y/%m/%d")
+        }
       end
     elsif saved_and_old?
       begin
@@ -21,7 +23,7 @@ class VideosController < ApplicationController
         update_videos(@youtube_data, @search_results)
         # 取得した動画一覧をレスポンスで返す
         set_videos
-      rescue
+      rescue StandardError
         @response = { error: ResourceNotFound }
       end
     else
@@ -32,12 +34,12 @@ class VideosController < ApplicationController
         save_videos(@youtube_data, params)
         # 取得した動画一覧をレスポンスで返す
         set_videos
-      rescue
+      rescue StandardError
         @response = { error: ResourceNotFound }
       end
     end
 
-    return @response.sort{|x, y| x[:view_count]  <=> y[:view_count] }.reverse
+    @response.sort { |x, y| x[:view_count] <=> y[:view_count] }.reverse
   end
 
   private
@@ -47,7 +49,10 @@ class VideosController < ApplicationController
     @search_results = Video.where(line_id: @line.id)
     # 取得した動画一覧をレスポンスで返す
     @search_results.each do |result|
-      @response << { video_id: result.video_id, title: result.title, description: result.description, thumbnail: result.thumbnail, view_count: result.view_count, published_at: result.published_at.strftime("%Y/%m/%d") }
+      @response << {
+        video_id: result.video_id, title: result.title, description: result.description,
+        thumbnail: result.thumbnail, view_count: result.view_count, published_at: result.published_at.strftime("%Y/%m/%d")
+      }
     end
   end
 
