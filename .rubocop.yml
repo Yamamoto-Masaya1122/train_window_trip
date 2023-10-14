@@ -41,3 +41,7 @@ Rails/I18nLocaleTexts:
 # ％i（）構文を使用していないシンボルで構成される配列リテラルをチェック（無効）
 Style/SymbolArray:
   Enabled: false
+
+# 文字列の連結に関するチェック（無効）
+Style/StringConcatenation:
+  Enabled: false

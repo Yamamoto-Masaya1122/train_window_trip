@@ -1,6 +1,6 @@
 require "test_helper"
 
-class YoutubeSearchsControllerTest < ActionDispatch::IntegrationTest
+class VideoTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
