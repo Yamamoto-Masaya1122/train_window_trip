@@ -2,3 +2,16 @@
 .edit_button_size{
   font-size:1.5em; /*1.5倍にする*/
 }
+
+/* プロフィール編集のモーダルの初期状態 */
+.modal-entering {
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* プロフィール編集のモーダルの表示後の状態 */
+.modal-entered {
+  opacity: 1;
+  transform: translateY(0);
+}

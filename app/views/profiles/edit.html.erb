@@ -1,50 +1,16 @@
-<div class="container flex items-center justify-center flex-1 h-full mx-auto">      
-  <div class="w-full max-w-lg">
-    <div class="leading-loose">
-      <%= form_with model: @user, url: profile_path, class: 'max-w-lg px-10 py-12 xl:mt-16 m-auto', local: true do |f| %>
-        <h1 class="mb-4 text-2xl font-bold text-center text-black-900"><%= t('.title') %></h1>
-        <%= render 'shared/error_messages', object: f.object %>
-        <div class="mb-3 flex-1">
-          <div class="pt-2 pb-2 text-sm">
-            <%= f.label :avatar, class: 'input-label-with-helper-text' %>
-              <span class="sr-only">Choose profile photo</span>
-          </div>
-          <%= f.file_field :avatar, class: 'block w-full text-sm text-gray-500 border border-slate-400 shadow-sm rounded-md
-          file:mr-4 file:py-2 file:px-4
-          file:rounded-md file:border-0
-          file:text-sm file:font-semibold
-          file:bg-accent file:text-white
-          hover:file:bg-indigo-700' %>
-          <%= f.hidden_field :avatar_cache %>
-        </div>
-        <div class="avatar">
-          <div class="w-24 rounded-full">
-            <%= image_tag @user.avatar.url %>
+<%= turbo_frame_tag 'modal' do %>
+<div data-controller="modal">
+  <div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center hidden modal-entering" data-modal-target="modal" style="z-index: 1000;">
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 p-5 w-full max-w-lg">
+      <button class="btn btn-sm btn-circle btn-ghost" data-action="click->modal#buttonClose">✕</button>
+      <div class="modal-content flex items-center justify-center flex-1 h-full mx-auto">      
+        <div class="w-full max-w-lg">
+          <div class="leading-loose">
+            <%= render "form" %>
           </div>
         </div>
-
-
-        <div class="mb-3 flex-1">
-          <div class="pt-2 pb-2 text-sm">
-            <%= f.label :name, class: 'block text-sm font-medium mb-2 dark:text-white' %>
-          </div>
-          <%= f.text_field :name, class: 'py-3 px-4 block w-full border-slate-400 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400' %>
-        </div>
-
-
-        <div class="mb-3 flex-1">
-          <div class="pt-2 pb-2 text-sm">
-            <%= f.label :email, class: 'block text-sm font-medium mb-2 dark:text-white' %>
-          </div>
-          <%= f.email_field :email, class: 'py-3 px-4 block w-full border-slate-400 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400' %>
-        </div>
-
-
-        
-        <div class="flex items-center justify-between mt-8">
-          <%= f.submit (t 'defaults.save_edit'), type: 'submit', class: 'cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg' %>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
+<% end %>
