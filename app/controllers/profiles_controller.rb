@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[show update edit]
 
   def show
     @line_likes = @user.lines
@@ -11,7 +11,6 @@ class ProfilesController < ApplicationController
     if @user.update(user_params)
       redirect_to profile_path, success: t('defaults.message.updated', item: User.model_name.human)
     else
-      flash.now['error'] = t('defaults.message.not_updated', item: User.model_name.human)
       render :edit, status: :unprocessable_entity
     end
   end

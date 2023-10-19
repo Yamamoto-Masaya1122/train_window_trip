@@ -29,6 +29,7 @@
       <% end %>
       <%= render 'shared/flash_message' %>
       <main class="flex-grow">
+        <%= turbo_frame_tag 'modal' %>
         <%= yield %>
       </main>
       <%= render 'shared/footer' %>

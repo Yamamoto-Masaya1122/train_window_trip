@@ -11,14 +11,10 @@
         <div class="py-1 text-2xl text-center">
           <%= current_user.name %>
         </div>
-        <div data-controller="modal">
-          <div class="absolute top-4 right-4">
-            <button data-action="click->modal#open">
-              <i class="fa-solid fa-pen-to-square edit_button_size"></i>
-            </button>
-          </div>
-          <!-- モーダル -->
-          <%= render 'edit_modal' %>
+        <div class="absolute top-4 right-4">
+          <%= link_to edit_profile_path, data: { turbo_frame: 'modal'} do %>
+            <i class="fa-solid fa-pen-to-square edit_button_size"></i>
+          <% end %>
         </div>
       </div>
       <div class="py-7 text-2xl text-center">

@@ -1,0 +1,16 @@
+<%= turbo_frame_tag 'modal' do %>
+<div data-controller="modal">
+  <div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center hidden" data-modal-target="modal" style="z-index: 1000;">
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 p-5 w-full max-w-lg">
+      <button class="btn btn-sm btn-circle btn-ghost" data-action="click->modal#buttonClose">✕</button>
+      <div class="modal-content flex items-center justify-center flex-1 h-full mx-auto">      
+        <div class="w-full max-w-lg">
+          <div class="leading-loose">
+            <%= render "form" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
