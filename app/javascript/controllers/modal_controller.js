@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = [ "modal"]
 
   connect() {
-    this.modalTarget.classList.remove('hidden');
+    this.showModalWithAnimation();
     document.body.style.overflow = 'hidden';
   }
 
@@ -15,8 +15,17 @@ export default class extends Controller {
       window.location.reload();
     }
   }
+
   buttonClose() {
     this.modalTarget.classList.add('hidden');
     document.body.style.overflow = '';
+  }
+
+  showModalWithAnimation() {
+    this.modalTarget.classList.remove('hidden');
+    this.modalTarget.classList.add('modal-entering');
+    setTimeout(() => {
+      this.modalTarget.classList.add('modal-entered');
+    }, 10); // 10msの遅延でアニメーションを開始
   }
 }
