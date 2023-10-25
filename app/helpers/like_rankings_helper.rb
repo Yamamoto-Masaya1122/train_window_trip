@@ -1,0 +1,2 @@
+module LikeRankingsHelper
+end

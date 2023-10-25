@@ -15,4 +15,5 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  resources :like_rankings, only: %i[index]
 end
