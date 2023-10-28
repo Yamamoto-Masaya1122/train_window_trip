@@ -5,6 +5,16 @@
   <div class="flex-none">
     <ul class="menu menu-horizontal text-white">
       <li><%= link_to (t 'lines.index.title'), lines_path, 'data-turbo': false %></li>
+      <li>
+        <details>
+          <summary>
+            ランキング
+          </summary>
+          <ul class="p-2 bg-neutral">
+            <li><%= link_to "人気の路線", like_rankings_path %></li>
+          </ul>
+        </details>
+      </li>
       <li><%= link_to (t 'profiles.show.title'), profile_path %></li>
       <li><%= link_to (t 'defaults.logout'), logout_path, data: { turbo_method: :delete } %></li>
     </ul>
