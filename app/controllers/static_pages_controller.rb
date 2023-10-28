@@ -4,20 +4,23 @@ class StaticPagesController < ApplicationController
 
   def top
     @line_like_ranks = Line.find(Like.group(:line_id).order('count(line_id) DESC').limit(3).pluck(:line_id))
-
-    @like_counts = @line_like_ranks.map { |line| Like.where(line_id: line.id).count }
-    @like_count_max = @like_counts.max
-
-    # 同率順位で表示されるようにする。
-    @crown_rank = @like_counts.map do |count|
-      case count
-      when @like_count_max
-        0 # 1位
-      when @like_count_max - 1
-        1 # 2位
-      else
-        2 # 3位
+  
+    @crown_rank = [] # 順位の配列
+    last_like_count = nil # 前の行のいいね数を保存する変数
+    rank = 1 # 実際の順位
+    cnt = 1 # 同じ順位のカウント
+  
+    @line_like_ranks.each_with_index do |line, i|
+      current_like_count = Like.where(line_id: line.id).count
+  
+      if last_like_count != current_like_count
+        rank = cnt
       end
+  
+      @crown_rank.push(rank)
+  
+      last_like_count = current_like_count
+      cnt += 1
     end
   end
 

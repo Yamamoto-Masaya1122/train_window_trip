@@ -67,7 +67,7 @@
             <!-- Card -->
             <div class="group flex flex-col bg-white h-full border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
               <div class="rank-crown flex">
-                <%= image_tag @crowns[index], size: "45x45", class:"ml-2" %>
+                <%= image_tag @crowns[index - 1], size: "45x45", class:"ml-2" %>
               </div>
               <%= image_tag result.image, class: 'h-52 w-63 flex flex-col justify-center items-center bg-blue-600' %>
               <div class="p-4 md:p-6">
