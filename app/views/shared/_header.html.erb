@@ -9,7 +9,7 @@
         <details>
           <summary><%= (t 'defaults.ranking') %></summary>
           <ul class="p-2 bg-neutral">
-            <li><%= link_to (t 'defaults.line_like_ranking'), like_rankings_path %></li>
+            <li><%= link_to (t 'defaults.line_like_ranking'), like_rankings_path, 'data-turbo': false %></li>
           </ul>
         </details>
       </li>
