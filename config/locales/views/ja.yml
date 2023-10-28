@@ -12,6 +12,9 @@ ja:
     delete: '削除'
     top_button: 'トップページに戻る'
     line_show_button: '路線詳細ページに戻る'
+    ranking: 'ランキング'
+    line_like_ranking: '人気の路線'
+    view_more_button: 'もっと見る'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
@@ -56,7 +59,11 @@ ja:
     index:
       title: '路線を探す'
     show:
+      title: '詳細'
       search_button: '車窓動画を見る'
+  like_rankings:
+    index:
+      title: '人気の路線 ベスト5'
   password_resets:
     new:
       title: 'パスワードリセット申請'

@@ -7,11 +7,9 @@
       <li><%= link_to (t 'lines.index.title'), lines_path, 'data-turbo': false %></li>
       <li>
         <details>
-          <summary>
-            ランキング
-          </summary>
+          <summary><%= (t 'defaults.ranking') %></summary>
           <ul class="p-2 bg-neutral">
-            <li><%= link_to "人気の路線", like_rankings_path %></li>
+            <li><%= link_to (t 'defaults.line_like_ranking'), like_rankings_path %></li>
           </ul>
         </details>
       </li>
