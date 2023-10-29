@@ -4,15 +4,14 @@ class StaticPagesController < ApplicationController
 
   def top
     @line_like_ranks = Line.find(Like.group(:line_id).order('count(line_id) DESC').limit(3).pluck(:line_id))
-
     @crown_rank = [] # 順位の配列
     last_like_count = nil # 前の行のいいね数を保存する変数
     rank = 1 # 実際の順位
-    cnt = 1 # 同じ順位のカウント
+    cnt = 1 # ループが進むたびに順位をカウントアップするための変数
 
     @line_like_ranks.each do |line|
       current_like_count = Like.where(line_id: line.id).count
-      rank = cnt if last_like_count != current_like_count
+      rank = cnt if last_like_count != current_like_count #現在のいいね数と前のいいね数が異なる場合、rankをcntの値に更新
       @crown_rank.push(rank)
       last_like_count = current_like_count
       cnt += 1
