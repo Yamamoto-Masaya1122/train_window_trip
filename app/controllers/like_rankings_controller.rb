@@ -1,9 +1,9 @@
-class StaticPagesController < ApplicationController
-  skip_before_action :require_login, only: %i[top]
+class LikeRankingsController < ApplicationController
+  skip_before_action :require_login, only: %i[index]
   before_action :crown_set
 
-  def top
-    @line_like_ranks = Line.find(Like.group(:line_id).order('count(line_id) DESC').limit(3).pluck(:line_id))
+  def index
+    @line_like_ranks = Line.find(Like.group(:line_id).order('count(line_id) DESC').limit(5).pluck(:line_id))
     @crown_rank = [] # 順位の配列
     last_like_count = nil # 前の行のいいね数を保存する変数
     rank = 1 # 実際の順位

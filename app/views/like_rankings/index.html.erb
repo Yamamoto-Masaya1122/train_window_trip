@@ -1,0 +1,35 @@
+<div class="flex flex-col items-center justify-center my-10">
+  <div class="flex justify-center text-3xl my-8"><%= (t 'like_rankings.index.title')%></div>
+  <div class="ranking-content">
+  <!-- Card Blog -->
+  <div class="max-w-[63rem] max-h-[80rem] px-4 py-10 sm:px-6 lg:px-8 lg:pb-14 mx-auto">
+    <!-- Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @line_like_ranks.zip(@crown_rank) do |result, index| %>
+        <!-- Card -->
+        <div class="group flex flex-col bg-white h-full border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+          <div class="rank-crown flex">
+            <%= image_tag @crowns[index - 1], size: "45x45", class:"ml-2" %>
+          </div>
+          <%= image_tag result.image, class: 'h-52 w-63 flex flex-col justify-center items-center bg-blue-600' %>
+          <div class="p-4 md:p-6">
+            <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:hover:text-white">
+              <%= result.name %>
+            </h3>
+            <div class="flex justify-end items-center text-xl text-gray-800">
+              <i class="fa-solid fa-heart text-secondary"></i>
+              <p class="ml-1 text-lg"><%= Like.where(line_id: result.id).count %></p>
+            </div>
+          </div>
+          <div class="mt-auto flex border-t border-gray-200 divide-x divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
+            <%= link_to (t 'lines.show.title'), line_path(result), class: 'w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-bl-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800'%>
+            <%= link_to (t 'lines.show.search_button'), videos_path(id: result.id), class: 'w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-br-xl font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm sm:p-4 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800'%>
+          </div>
+        </div>
+        <!-- End Card -->
+      <% end %>
+    </div>
+    <!-- End Grid -->
+  </div>
+  <!-- End Card Blog -->
+</div>
