@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
   root 'static_pages#top'
+  get 'terms_of_service', to: 'static_pages#terms_of_service'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
