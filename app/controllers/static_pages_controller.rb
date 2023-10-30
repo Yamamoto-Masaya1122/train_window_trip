@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  skip_before_action :require_login, only: %i[top]
+  skip_before_action :require_login, only: %i[top privacy_policy]
   before_action :crown_set
 
   def top
@@ -17,6 +17,8 @@ class StaticPagesController < ApplicationController
       cnt += 1
     end
   end
+
+  def privacy_policy; end
 
   private
 
