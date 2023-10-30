@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  skip_before_action :require_login, only: %i[top]
+  skip_before_action :require_login, only: %i[top privacy_policy]
   before_action :crown_set
 
   def top
@@ -11,12 +11,14 @@ class StaticPagesController < ApplicationController
 
     @line_like_ranks.each do |line|
       current_like_count = Like.where(line_id: line.id).count
-      rank = cnt if last_like_count != current_like_count #現在のいいね数と前のいいね数が異なる場合、rankをcntの値に更新
+      rank = cnt if last_like_count != current_like_count # 現在のいいね数と前のいいね数が異なる場合、rankをcntの値に更新
       @crown_rank.push(rank)
       last_like_count = current_like_count
       cnt += 1
     end
   end
+
+  def privacy_policy; end
 
   private
 
