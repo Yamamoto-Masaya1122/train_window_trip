@@ -87,3 +87,4 @@ gem 'seed-fu'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'fog-aws'
+gem "meta-tags"
