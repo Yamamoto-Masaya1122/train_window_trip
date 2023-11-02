@@ -14,6 +14,9 @@ ja:
     line_show_button: '路線詳細ページに戻る'
     ranking: 'ランキング'
     line_like_ranking: '人気の路線'
+    line_spring_like_ranking: '春に行って欲しい路線'
+    line_autumn_like_ranking: '秋に行って欲しい路線'
+    line_winter_like_ranking: '冬に行って欲しい路線'
     view_more_button: 'もっと見る'
     message:
       require_login: 'ログインしてください'
@@ -64,6 +67,15 @@ ja:
   like_rankings:
     index:
       title: '人気の路線 ベスト5'
+  spring_rankings:
+    index:
+      title: '春に行って欲しい路線 ベスト5'
+  autumn_rankings:
+    index:
+      title: '秋に行って欲しい路線 ベスト5'
+  winter_rankings:
+    index:
+      title: '冬に行って欲しい路線 ベスト5'
   password_resets:
     new:
       title: 'パスワードリセット申請'
