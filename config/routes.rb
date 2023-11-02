@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     end
   end
   resources :like_rankings, only: %i[index]
+  resources :spring_rankings, only: %i[index]
 end
