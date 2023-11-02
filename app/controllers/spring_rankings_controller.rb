@@ -4,7 +4,7 @@ class SpringRankingsController < ApplicationController
 
   def index
     category = Category.find_by(name: '桜')
-    @line_like_ranks = Line.joins(:line_categories, :likes)
+    @line_spring_like_ranks = Line.joins(:line_categories, :likes)
                           .where(line_categories: { category_id: category.id })
                           .group('lines.id')
                           .select('lines.*, COUNT(likes.id) AS likes_count')
@@ -15,7 +15,7 @@ class SpringRankingsController < ApplicationController
     rank = 1 # 実際の順位
     cnt = 1 # ループが進むたびに順位をカウントアップするための変数
 
-    @line_like_ranks.each do |line|
+    @line_spring_like_ranks.each do |line|
       current_like_count = line.likes_count
       rank = cnt if last_like_count != current_like_count # 現在のいいね数と前のいいね数が異なる場合、rankをcntの値に更新
       @crown_rank.push(rank)
