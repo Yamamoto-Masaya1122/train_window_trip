@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   resources :like_rankings, only: %i[index]
   resources :spring_rankings, only: %i[index]
   resources :winter_rankings, only: %i[index]
+  resources :autumn_rankings, only: %i[index]
 end
