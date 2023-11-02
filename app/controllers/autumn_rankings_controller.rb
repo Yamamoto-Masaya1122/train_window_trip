@@ -5,11 +5,11 @@ class AutumnRankingsController < ApplicationController
   def index
     category = Category.find_by(name: '紅葉')
     @line_autumn_like_ranks = Line.joins(:line_categories, :likes)
-                          .where(line_categories: { category_id: category.id })
-                          .group('lines.id')
-                          .select('lines.*, COUNT(likes.id) AS likes_count')
-                          .order('likes_count DESC')
-                          .limit(5)
+                                  .where(line_categories: { category_id: category.id })
+                                  .group('lines.id')
+                                  .select('lines.*, COUNT(likes.id) AS likes_count')
+                                  .order('likes_count DESC')
+                                  .limit(5)
     @crown_rank = [] # 順位の配列
     last_like_count = nil # 前の行のいいね数を保存する変数
     rank = 1 # 実際の順位
