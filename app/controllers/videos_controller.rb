@@ -39,7 +39,11 @@ class VideosController < ApplicationController
       end
     end
 
-    @response.sort { |x, y| x[:view_count] <=> y[:view_count] }.reverse
+    if params[:latest]
+      @response.sort_by! { |item| item[:published_at] }.reverse!
+    elsif params[:most_view]
+      @response.sort_by! { |item| item[:view_count].to_i }.reverse!
+    end
   end
 
   private
