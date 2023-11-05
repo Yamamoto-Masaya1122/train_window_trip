@@ -39,14 +39,32 @@ class VideosController < ApplicationController
       end
     end
 
-    if params[:latest]
-      @response.sort_by! { |item| item[:published_at] }.reverse!
-    elsif params[:most_view]
-      @response.sort_by! { |item| item[:view_count].to_i }.reverse!
+    # ソート機能（閲覧数順、投稿日順）
+    if params[:order_by_published_at]
+      @response = sort_videos_by(@search_results, :published_at)
+    elsif params[:order_by_view_count]
+      @response = sort_videos_by(@search_results, :view_count)
+    else
+      # デフォルトのソート（投稿日の降順）
+      @response = sort_videos_by(@search_results, :published_at)
     end
   end
 
   private
+
+  # 動画を指定された属性でソートしてレスポンスを返すメソッド
+  def sort_videos_by(videos, attribute)
+    videos.order(attribute => :desc).map do |video|
+      {
+        video_id: video.video_id,
+        title: video.title,
+        description: video.description,
+        thumbnail: video.thumbnail,
+        view_count: video.view_count,
+        published_at: video.published_at.strftime("%Y/%m/%d")
+      }
+    end
+  end
 
   # 地点に関する動画を全て取得
   def set_videos
