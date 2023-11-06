@@ -1,26 +1,29 @@
-<div class="h-72 pt-32">
-  <div class="flex justify-center">
-    <%= link_to (t 'defaults.line_show_button'), line_path(@line), class: 'cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg' %>
-    <%= link_to (t 'defaults.top_button'), root_path, class: 'items-center text-white bg-gray-500 hover:bg-gray-600 focus:ring-gray-500 focus:ring-offset-gray-500 font-semibold rounded-lg px-4 py-2 ml-10' %>
-  </div>
+<div class="tabs border-b border-gray-200 dark:border-gray-700 mt-24">
+  <%= link_to "投稿日順", videos_path(id: @line.id, order_by_published_at: "true"), class: "tab tab-bordered #{'tab-active' unless params[:order_by_view_count]}", id: "latest-tab" %> 
+  <%= link_to "閲覧数順", videos_path(id: @line.id, order_by_view_count: "true"), class: "tab tab-bordered #{'tab-active' if params[:order_by_view_count]}", id: "views-tab" %>
 </div>
-<div class="flex justify-center">
-  <hr class="border-t-2 border-gray-10 w-10/12 mb-12">
-</div>
+
+<!-- モーダル -->
 <div class="bg-white py-6 sm:py-8">
   <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
     <div class="grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
       <% @response.each do |item| %>
         <%# タイトルにキーワードと前面展望を含んでいる動画だけを表示する %>
         <% if item[:title].include?(@line.name) && item[:title].include?("前面展望")%>
-          <div class="flex flex-col group h-64 bg-gray-100 rounded-lg overflow-hidden shadow-lg relative cursor-pointer youtube-thumbnail" data-video-id="<%= item[:video_id] %>">
-            <img src="<%= item[:thumbnail] %>" alt="<%= item[:title] %>" class="w-full h-full object-cover">
-            <div><%= item[:view_count].to_fs(:delimited) %>回再生</div>
+          <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] youtube-thumbnail" data-video-id="<%= item[:video_id] %>">
+            <img src="<%= item[:thumbnail] %>" alt="<%= item[:title] %>" class="w-full h-auto rounded-t-xl">
+            <div class="p-4 md:p-5">
+              <p><%= item[:view_count].to_fs(:delimited) %>回再生</p>
+              <p><%= item[:published_at] %></p>
+            </div>
           </div>
         <% elsif item[:description].include?(@line.name) && item[:description].include?("前面展望") %>
-          <div class="flex flex-col group h-64 bg-gray-100 rounded-lg overflow-hidden shadow-lg relative cursor-pointer youtube-thumbnail" data-video-id="<%= item[:video_id] %>">
-            <img src="<%= item[:thumbnail] %>" alt="<%= item[:title] %>" class="w-full h-full object-cover">
-            <div><%= item[:view_count].to_fs(:delimited) %>回再生</div>
+          <div class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7] youtube-thumbnail" data-video-id="<%= item[:video_id] %>">
+            <img src="<%= item[:thumbnail] %>" alt="<%= item[:title] %>" class="w-full h-auto rounded-t-xl">
+            <div class="p-4 md:p-5">
+              <p><%= item[:view_count].to_fs(:delimited) %>回再生</p>
+              <p><%= item[:published_at] %></p>
+            </div>
           </div>
         <% end %>
       <% end %>
@@ -30,3 +33,9 @@
 
 <!-- モーダル -->
 <%= render 'modal' %>
+
+<div class="h-72 pt-32">
+  <div class="flex justify-center">
+    <%= link_to (t 'defaults.line_show_button'), line_path(@line), class: 'items-center text-white bg-gray-500 hover:bg-gray-600 focus:ring-gray-500 focus:ring-offset-gray-500 font-semibold rounded-lg px-4 py-2 ml-10' %>
+  </div>
+</div>
