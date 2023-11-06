@@ -56,6 +56,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rubocop', require:false
   gem 'rubocop-rails', require:false
+  gem 'letter_opener_web', '~> 2.0'
 end
 
 group :development do
@@ -88,3 +89,4 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'fog-aws'
 gem "meta-tags"
+gem "config"
