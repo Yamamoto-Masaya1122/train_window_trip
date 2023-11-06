@@ -9,6 +9,7 @@ ja:
     save_edit: '編集を保存'
     search: '検索'
     password_reset: 'パスワードリセット'
+    password_forget: 'パスワードをお忘れですか？'
     delete: '削除'
     top_button: 'トップページに戻る'
     line_show_button: '路線詳細ページに戻る'
@@ -79,7 +80,7 @@ ja:
   password_resets:
     new:
       title: 'パスワードリセット申請'
-      submit: '送信'
+      submit: '送信する'
     create:
       success: 'パスワードリセット手順を送信しました'
     edit:
