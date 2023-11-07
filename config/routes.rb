@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root 'static_pages#top'
   get 'terms_of_service', to: 'static_pages#terms_of_service'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
@@ -21,4 +22,5 @@ Rails.application.routes.draw do
   resources :spring_rankings, only: %i[index]
   resources :winter_rankings, only: %i[index]
   resources :autumn_rankings, only: %i[index]
+  resources :password_resets
 end
