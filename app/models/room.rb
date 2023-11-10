@@ -3,5 +3,5 @@ class Room < ApplicationRecord
   has_many :users, through: :comments
   has_many :comments, dependent: :destroy
 
-  validates :name, length: {maximum: 20}, presence: true
+  validates :name, length: { maximum: 20 }, presence: true
 end
