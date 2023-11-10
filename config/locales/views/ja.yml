@@ -7,12 +7,14 @@ ja:
     cancel: 'キャンセル'
     profile_edit: 'プロフィール編集'
     save_edit: '編集を保存'
+    create_room: '作成する'
     search: '検索'
     password_reset: 'パスワードリセット'
     password_forget: 'パスワードをお忘れですか？'
     delete: '削除'
     top_button: 'トップページに戻る'
     line_show_button: '路線詳細ページに戻る'
+    new_room_button: 'チャットルームを作る'
     ranking: 'ランキング'
     line_like_ranking: '人気の路線'
     line_spring_like_ranking: '春に行って欲しい路線'
@@ -88,6 +90,12 @@ ja:
     update:
       success: 'パスワードを変更しました'
       fail: 'パスワードの変更に失敗しました'
+  rooms:
+    new:
+      title: 'チャットルーム作成'
+    create:
+      success: 'チャットルームを作成しました'
+      fail: 'チャットルームを作成できませんでした'
   admin:
     user_sessions:
       new:

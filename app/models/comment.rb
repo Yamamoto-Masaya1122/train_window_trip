@@ -1,6 +1,7 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :line
+  belongs_to :room
   after_commit :broadcast_comment, on: [:create]
 
   validates :body, presence: true, length: { maximum: 65535}

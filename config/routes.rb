@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resource :profile, only: %i[show edit update]
   resources :lines, only: %i[index show] do
     resources :comments
+    resources :rooms, only: %i[new create]
     collection do
       get :update_lines_options
       get :search
