@@ -20,3 +20,5 @@ ja:
         recommended_train_window_spot: 'おすすめの車窓'
       category:
         name: 'カテゴリ'
+      room:
+        name: 'ルーム名'

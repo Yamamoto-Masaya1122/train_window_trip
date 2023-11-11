@@ -1,0 +1,14 @@
+<%= form_with model: [line, room], local: true do |f| %>
+  <%= hidden_field_tag :line_id, line.id %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.label :name, class: 'mt-2 block text-sm mb-2 dark:text-white' %>
+  <div class="relative">
+    <%= f.text_field :name, class: 'py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400' %>
+    <div class="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3">
+      <svg class="h-5 w-5 text-red-500" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+      </svg>
+    </div>
+  </div>
+  <%= f.submit (t 'defaults.create_room'), class: 'w-full btn bg-blue-500 mt-4 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800' %>
+<% end %>
