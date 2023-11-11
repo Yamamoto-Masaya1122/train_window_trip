@@ -10,6 +10,7 @@ class RoomChannel < ApplicationCable::Channel
     room = Room.find(data['room_id'])
     body = data['comment'].strip # メッセージの前後の空白を削除
     return if body.blank? # メッセージが空でないことを確認
+
     # メッセージの作成だけ行い、ブロードキャストは after_commit フックに任せる
     room.comments.create!(body:, user_id: current_user.id)
     sleep(0.1)

@@ -3,6 +3,12 @@ class RoomsController < ApplicationController
     @rooms = Room.all.order(created_at: :DESC)
   end
 
+  def show
+    @room = Room.find(params[:id])
+    @comment = Comment.new
+    @comments = @room.comments.includes(:user).order(created_at: :asc)
+  end
+
   def new
     @line = Line.find(params[:line_id])
     @room = Room.new
@@ -18,12 +24,6 @@ class RoomsController < ApplicationController
       flash.now[:error] = t('.fail')
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @room = Room.find(params[:id])
-    @comment = Comment.new
-    @comments = @room.comments.includes(:user).order(created_at: :asc)
   end
 
   private
