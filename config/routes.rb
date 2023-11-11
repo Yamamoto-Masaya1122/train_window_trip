@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :videos, only: %i[index]
   resource :profile, only: %i[show edit update]
   resources :lines, only: %i[index show] do
-    resources :comments
     resources :rooms, only: %i[new create]
     collection do
       get :update_lines_options
@@ -24,4 +23,7 @@ Rails.application.routes.draw do
   resources :winter_rankings, only: %i[index]
   resources :autumn_rankings, only: %i[index]
   resources :password_resets
+  resources :rooms, only: %i[index show] do
+    resources :comments
+  end
 end

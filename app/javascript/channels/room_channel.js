@@ -6,8 +6,8 @@ document.addEventListener("turbo:load", () => {
     return;
   }
   const currentUserId = document.body.dataset.currentUserId;
-  const lineId = comments.dataset.lineId;
-  const appLine = consumer.subscriptions.create({channel: "LineChannel", line_id: lineId}, {
+  const roomId = comments.dataset.roomId;
+  const appRoom = consumer.subscriptions.create({channel: "RoomChannel", room_id: roomId}, {
     received(data) {
       let commentHtml;
       if (data.sender_id.toString() === currentUserId) {
@@ -18,31 +18,31 @@ document.addEventListener("turbo:load", () => {
       
       comments.insertAdjacentHTML('beforeend', commentHtml);
     },
-  
-    speak: function(comment, lineId) {
-      return this.perform('speak', {comment: comment, line_id: lineId});
+
+    speak: function(comment, roomId) {
+      return this.perform('speak', {comment: comment, room_id: roomId});
     }
   });
 
-  const input = document.getElementById('line_input');
+  const input = document.getElementById('room_input');
   const button = document.getElementById('submit_button');
 
   if(input) {
     input.addEventListener("keypress", function(e) {
       if (e.key === 'Enter') {
-        appLine.speak(e.target.value, lineId);
+        appRoom.speak(e.target.value, roomId);
         e.target.value = '';
         e.preventDefault();
       }
     });
   } else {
-    console.error("Could not find element with id 'line_input'");
+    console.error("Could not find element with id 'room_input'");
   }
 
   if(button) {
     button.addEventListener("click", function(e) {
       if(input.value !== '') {
-        appLine.speak(input.value, lineId);
+        appRoom.speak(input.value, roomId);
         input.value = '';
       }
       e.preventDefault();

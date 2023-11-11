@@ -3,7 +3,6 @@ class Line < ApplicationRecord
   has_many :prefectures, through: :prefecture_lines
   has_many :line_categories, dependent: :destroy
   has_many :categories, through: :line_categories
-  has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
   has_many :videos, dependent: :destroy

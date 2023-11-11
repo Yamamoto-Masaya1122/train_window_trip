@@ -9,8 +9,6 @@ class LinesController < ApplicationController
 
   def show
     @line = Line.find(params[:id])
-    @comment = Comment.new
-    @comments = @line.comments.includes(:user).order(created_at: :asc)
   end
 
   def update_lines_options

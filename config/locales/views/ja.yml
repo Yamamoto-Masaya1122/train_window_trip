@@ -91,6 +91,8 @@ ja:
       success: 'パスワードを変更しました'
       fail: 'パスワードの変更に失敗しました'
   rooms:
+    index: 
+      title: 'チャットルーム一覧'
     new:
       title: 'チャットルーム作成'
     create:

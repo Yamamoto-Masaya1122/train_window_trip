@@ -1,0 +1,80 @@
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div class="flex flex-col">
+    <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700">
+          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
+            <div>
+              <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                <%= t '.title' %>
+              </h2>
+            </div>
+          </div>
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-50 dark:bg-slate-800">
+              <tr>
+                <th scope="col" class="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 ml-3">
+                      ルーム名
+                    </span>
+                  </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 ml-3">
+                      作成者
+                    </span>
+                  </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 ml-3">
+                      路線名
+                    </span>
+                  </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-end"></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+              <% @rooms.each do |room| %>
+                <tr>
+                  <td class="h-px w-px whitespace-nowrap">
+                    <div class="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3">
+                      <div class="flex items-center gap-x-3">
+                        <%= link_to room_path(room), class: 'grow' do %>
+                          <h2 class="block text-sm font-semibold text-accent dark:text-gray-200 ml-3"><%= room.name %></h2>
+                        <% end %>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="h-px w-72 whitespace-nowrap">
+                    <div class="flex ml-7">
+                      <%= image_tag room.user.avatar.url, class: "inline-block h-[2.375rem] w-[2.375rem] rounded-full mt-1" %>
+                      <div class="px-6 py-3">
+                        <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200"><%= room.user.name %></span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="h-px w-72 whitespace-nowrap">
+                    <div class="px-6 py-3">
+                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200 ml-3"><%= room.line.name %></span>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200 dark:border-gray-700">
+            <div>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                <span class="font-semibold text-gray-800 dark:text-gray-200"><%= @rooms.count %></span> results
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
