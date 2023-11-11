@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
   belongs_to :line
+  belongs_to :user
   has_many :users, through: :comments
   has_many :comments, dependent: :destroy
 

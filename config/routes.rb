@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   resources :winter_rankings, only: %i[index]
   resources :autumn_rankings, only: %i[index]
   resources :password_resets
+  resources :rooms, only: %i[index]
 end
