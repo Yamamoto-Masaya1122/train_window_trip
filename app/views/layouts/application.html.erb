@@ -34,7 +34,9 @@
         <%= turbo_frame_tag 'modal' %>
         <%= yield %>
       </main>
-      <%= render 'shared/footer' %>
+      <% unless controller_name == 'rooms' && action_name == 'show' %>
+        <%= render 'shared/footer' %>
+      <% end %>
     </div>
   </body>
 </html>

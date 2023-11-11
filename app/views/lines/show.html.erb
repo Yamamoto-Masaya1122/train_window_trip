@@ -1,13 +1,46 @@
-<% if logged_in? %>
-  <div class="pb-12 grid grid-cols-2">
-  <!-- チャットルーム -->
-    <%= render 'chat', line: @line %>
-  <!-- 路線詳細情報 -->
-    <%= render 'line_detail', line: @line %>
+<div class="max-w-screen-md mx-auto pb-12">
+  <div class="mx-4">
+    <h1 class="text-2xl sm:text-3xl font-extrabold leading-normal mt-16 mb-6 mx-2 text-center"><%= @line.name %></h1>
+    <div class="flex justify-center">
+      <%= image_tag @line.image, class: "w-3/5" %>
+    </div>
+    <div class="flex items-center justify-center my-7">
+      <!-- チャットルーム作成 -->
+      <%= link_to (t 'defaults.new_room_button'), new_line_room_path(line_id: @line.id), class: 'mr-4 cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg'%>
+      <!-- 動画を見る -->
+      <%= link_to (t 'lines.show.search_button'), videos_path(id: @line.id), class: 'cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg' %>
+      <!-- お気に入り登録-->
+      <% if logged_in? %>
+        <% if current_user.liked_by?(@line) %>
+          <%= render 'likes/show_unlike_button', line: @line %>
+        <% else %>
+          <%= render 'likes/show_like_button', line: @line %>
+        <% end %>
+      <% end %>
+    </div>
+    <table class="mb-8 font-light table-border w-full">
+      <tbody class="w-11/12 m-auto">
+        <tr>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Line.human_attribute_name(:description) %></td>
+          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed"><%= @line.description %></td>
+        <tr>
+        <tr>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Line.human_attribute_name(:line_url) %></td>
+          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed link link-accent"><%= link_to @line.line_url, @line.line_url %></td>
+        <tr>
+        <tr>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Line.human_attribute_name(:recommended_train_window_spot) %></td>
+          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed"><%= @line.recommended_train_window_spot %></td>
+        <tr>
+        <tr>
+          <td class="pl-1 pr-5 py-3 whitespace-nowrap text-sm sm:text-lg font-semibold align-top"><%= Category.human_attribute_name(:name) %></td>
+          <td class="px-1 py-3 text-sm sm:text-lg leading-relaxed">
+            <% @line.categories.each do |category| %>
+              <p class="mx-1 badge badge-outline bg-accent text-white text-sm sm:text-base"><%= category.name %></p>
+            <% end %>
+          </td>
+        <tr>
+      </tbody>
+    </table>
   </div>
-<% else %>
-  <!-- 路線詳細情報 -->
-  <div class="max-w-screen-md mx-auto pb-12">
-    <%= render 'line_detail', line: @line %>
-  </div>
-<% end %>
+</div>

@@ -1,9 +1,15 @@
 <% comment = local_assigns[:comment] %>
-<div class="flex justify-end my-3">
-  <div class="pe-2 me-1" style="max-width: 348px;">
-    <div class="bg-green-400 bg-gradient p-3 mb-1" style="border-top-left-radius: .5rem; border-bottom-right-radius: .5rem; border-bottom-left-radius: .5rem;"><%= comment.body %></div>
-    <div class="flex justify-end">
-      <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
+<div class="chat chat-end comment-own pr-6 pt-6" data-user-id="<%= comment.user_id %>">
+  <div class="chat-image avatar">
+    <div class="w-10 rounded-full">
+      <%= image_tag comment.user.avatar.url %>
     </div>
+  </div>
+  <div class="chat-header">
+    <%= comment.user.name %>
+  </div>
+  <div class="chat-bubble bg-green-400"><%= comment.body %></div>
+  <div class="chat-footer opacity-50">
+    <%= comment.created_at.strftime('%Y年%m月%d日 %H:%M') %>
   </div>
 </div>

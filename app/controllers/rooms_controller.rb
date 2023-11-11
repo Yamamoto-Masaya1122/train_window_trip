@@ -13,11 +13,17 @@ class RoomsController < ApplicationController
     @room = @line.rooms.build(room_params)
     @room.user = current_user
     if @room.save
-      redirect_to rooms_path, success: t('.success')
+      redirect_to room_path(@room), success: t('.success')
     else
       flash.now[:error] = t('.fail')
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @room = Room.find(params[:id])
+    @comment = Comment.new
+    @comments = @room.comments.includes(:user).order(created_at: :asc)
   end
 
   private

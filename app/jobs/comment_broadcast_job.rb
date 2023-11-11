@@ -3,7 +3,7 @@ class CommentBroadcastJob < ApplicationJob
 
   def perform(comment)
     Rails.logger.info "Broadcasting comment #{comment.id}"
-    LineChannel.broadcast_to(comment.line, comment: render_comment(comment), second_comment: render_second_comment(comment), sender_id: comment.user_id)
+    RoomChannel.broadcast_to(comment.room, comment: render_comment(comment), second_comment: render_second_comment(comment), sender_id: comment.user_id)
   end
 
   private
