@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_09_031836) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_10_092258) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,8 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_031836) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "line_id", null: false
-    t.index ["line_id"], name: "index_comments_on_line_id"
+    t.bigint "room_id", null: false
+    t.index ["room_id"], name: "index_comments_on_room_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -79,7 +79,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_031836) do
     t.bigint "line_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["line_id"], name: "index_rooms_on_line_id"
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -111,7 +113,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_031836) do
     t.index ["line_id"], name: "index_videos_on_line_id"
   end
 
-  add_foreign_key "comments", "lines"
+  add_foreign_key "comments", "rooms"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "lines"
   add_foreign_key "likes", "users"
@@ -120,5 +122,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_031836) do
   add_foreign_key "prefecture_lines", "lines"
   add_foreign_key "prefecture_lines", "prefectures"
   add_foreign_key "rooms", "lines"
+  add_foreign_key "rooms", "users"
   add_foreign_key "videos", "lines"
 end
