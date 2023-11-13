@@ -1,0 +1,31 @@
+<tr>
+  <td class="h-px w-72 whitespace-nowrap">
+    <div class="ps-6 py-3">
+      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200"><%= user.id %></span>
+    </div>
+  </td>
+  <td class="h-px w-72 whitespace-nowrap">
+    <div class="px-6 py-3">
+      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200"><%= user.name %></span>
+    </div>
+  </td>
+  <td class="h-px w-72 whitespace-nowrap">
+    <div class="px-6 py-3">
+      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200 ml-3"><%= user.role_i18n %></span>
+    </div>
+  </td>
+  <td class="h-px w-72 whitespace-nowrap">
+    <div class="px-6 py-3">
+      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200 ml-3"><%= l user.created_at, format: :long %></span>
+    </div>
+  </td>
+  <td class="ml-5 whitespace-nowrap">
+    <%= link_to t('defaults.show'), admin_user_path(user), class: "btn btn-neutral" %>
+  </td>
+  <td class="ml-2 whitespace-nowrap">
+    <%= link_to t('defaults.edit'), edit_admin_user_path(user), class: "btn btn-success" %>
+  </td>
+  <td class="ml-2 whitespace-nowrap">
+    <%= link_to t('defaults.delete'), admin_user_path(user), data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm')}, class: "btn btn-error" %>
+  </td>
+</tr>

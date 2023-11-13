@@ -90,3 +90,4 @@ gem 'carrierwave'
 gem 'fog-aws'
 gem "meta-tags"
 gem "config"
+gem 'enum_help'

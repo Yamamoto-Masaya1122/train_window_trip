@@ -26,4 +26,12 @@ Rails.application.routes.draw do
   resources :rooms, only: %i[index show] do
     resources :comments
   end
+  namespace :admin do
+    root "dashboards#index"
+    resource :dashboard, only: %i[index]
+    get 'login' => 'user_sessions#new', :as => :login
+    post 'login' => "user_sessions#create"
+    delete 'logout' => 'user_sessions#destroy', :as => :logout
+    resources :users, only: %i[index show edit update destroy]
+  end
 end

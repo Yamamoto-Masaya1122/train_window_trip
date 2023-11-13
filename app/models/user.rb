@@ -15,6 +15,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
 
+  enum role: { general: 0, admin: 1 }
+
   def unlikes_line(line)
     lines.destroy(line)
   end
