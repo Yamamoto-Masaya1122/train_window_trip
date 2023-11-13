@@ -1,0 +1,14 @@
+<div class="w-full max-w-lg mx-auto mt-24">
+  <h1 class="mb-2 text-2xl font-bold text-center text-black-900"><%= t '.title' %></h1>
+  <%= form_with model: @comment, url: admin_comment_path(@comment), class: 'max-w-lg px-10 py-12', local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+      <div class="mb-4 flex-1">
+        <%= f.label :body, class: 'block text-sm font-medium mb-2 dark:text-white' %>
+        <%= f.text_field :body, class: 'py-3 px-4 block w-full border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500' %>
+      </div>
+      <div class="flex items-center justify-center mt-8">
+        <%= f.submit (t 'defaults.save_edit'), type: 'submit', class: 'cursor-pointer py-3 px-4 bg-blue-500 hover:bg-blue-600 text-white w-full rounded-md font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500' %>
+      </div>
+    </div>
+  <% end %>
+</div>
