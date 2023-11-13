@@ -1,0 +1,21 @@
+<div class="w-full max-w-lg mx-auto mt-24">
+  <h1 class="mb-2 text-2xl font-bold text-center text-black-900"><%= t '.title' %></h1>
+  <table class="table table-bordered bg-white my-9">
+    <tr>
+      <th scope="row"><%= Comment.human_attribute_name(:id) %></th>
+      <td><%= @comment.id %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= Comment.human_attribute_name(:body) %></th>
+      <td><%= @comment.body %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= Comment.human_attribute_name(:created_at) %></th>
+      <td><%= l @comment.created_at, format: :long %></td>
+    </tr>
+  </table>
+  <%= link_to t('defaults.edit'), edit_admin_comment_path(@comment), class: "btn btn-success" %>
+  <div class="inline-block ml-2">
+    <%= link_to t('defaults.delete'), admin_comment_path(@comment), data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm')}, class: "btn btn-error" %>
+  </div>
+</div>
