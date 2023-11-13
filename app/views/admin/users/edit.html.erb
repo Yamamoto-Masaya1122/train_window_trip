@@ -1,4 +1,4 @@
-<div class="w-full max-w-md mx-auto mt-24">
+<div class="w-full max-w-lg mx-auto mt-24">
   <h1 class="mb-2 text-2xl font-bold text-center text-black-900"><%= t '.title' %></h1>
   <%= form_with model: @user, url: admin_user_path(@user), class: 'max-w-lg px-10 py-12', local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>

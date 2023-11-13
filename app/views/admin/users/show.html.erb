@@ -1,30 +1,33 @@
-<div class="w-full max-w-md mx-auto mt-24">
+<div class="w-full max-w-lg mx-auto mt-24">
   <h1 class="mb-2 text-2xl font-bold text-center text-black-900"><%= t '.title' %></h1>
-  <div class="mb-4 flex-1">
-    <div class="mb-3 flex items-center">
-      <div class="avatar">
-        <div class="w-24 rounded-full mr-4">
-          <%= image_tag @user.avatar.url %>
+  <table class="table table-bordered bg-white my-9">
+    <tr>
+      <th scope="row"><%= User.human_attribute_name(:id) %></th>
+      <td><%= @user.id %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= User.human_attribute_name(:role) %></th>
+      <td><%= @user.role_i18n %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= User.human_attribute_name(:name) %></th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= User.human_attribute_name(:avatar) %></th>
+      <td>
+        <div class="avatar">
+          <div class="w-28 rounded-full mr-4">
+            <%= image_tag @user.avatar.url %>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="mb-4 flex-1">
-      <strong class="block block text-sm font-medium mb-2 dark:text-white"><%= User.human_attribute_name(:id) %></strong>
-      <%= @user.id %>
-    </div>
-    <div class="mb-4 flex-1">
-      <strong class="block block text-sm font-medium mb-2 dark:text-white"><%= User.human_attribute_name(:name) %></strong>
-      <%= @user.name %>
-    </div>
-    <div class="mb-4 flex-1">
-      <strong class="block block text-sm font-medium mb-2 dark:text-white"><%= User.human_attribute_name(:email) %></strong>
-      <%= @user.email %>
-    </div>
-    <div class="mb-4 flex-1">
-      <strong class="block block text-sm font-medium mb-2 dark:text-white"><%= User.human_attribute_name(:role) %></strong>
-      <%= @user.role %>
-    </div>
-  </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row"><%= User.human_attribute_name(:created_at) %></th>
+      <td><%= l @user.created_at, format: :long %></td>
+    </tr>
+  </table>
   <%= link_to t('defaults.edit'), edit_admin_user_path(@user), class: "btn btn-success" %>
   <div class="inline-block ml-2">
     <%= link_to t('defaults.delete'), admin_user_path(@user), data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm')}, class: "btn btn-error" %>
