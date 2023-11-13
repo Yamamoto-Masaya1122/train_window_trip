@@ -45,3 +45,7 @@ Style/SymbolArray:
 # 文字列の連結に関するチェック（無効）
 Style/StringConcatenation:
   Enabled: false
+
+# モジュールやクラスの定義のコンパクトスタイルを許可する
+Style/ClassAndModuleChildren:
+  Enabled: false
