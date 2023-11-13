@@ -1,0 +1,86 @@
+<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <div class="flex flex-col">
+    <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+        <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-slate-900 dark:border-gray-700">
+          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
+            <div>
+              <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
+                ユーザー一覧
+              </h2>
+            </div>
+          </div>
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-50 dark:bg-slate-800">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
+                      ID
+                    </span>
+                  </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 ml-1">
+                      氏名
+                    </span>
+                  </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 ml-3">
+                      権限
+                    </span>
+                  </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2">
+                    <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 ml-3">
+                      作成日時
+                    </span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+              <% @users.each do |user| %>
+                <tr>
+                  <td class="h-px w-72 whitespace-nowrap">
+                    <div class="ps-6 py-3">
+                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200"><%= user.id %></span>
+                    </div>
+                  </td>
+                  <td class="h-px w-72 whitespace-nowrap">
+                    <div class="px-6 py-3">
+                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200"><%= user.name %></span>
+                    </div>
+                  </td>
+                  <td class="h-px w-72 whitespace-nowrap">
+                    <div class="px-6 py-3">
+                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200 ml-3"><%= user.role %></span>
+                    </div>
+                  </td>
+                  <td class="h-px w-72 whitespace-nowrap">
+                    <div class="px-6 py-3">
+                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200 ml-3"><%= user.created_at %></span>
+                    </div>
+                  </td>
+                  <td class="ml-5 whitespace-nowrap">
+                    <%= link_to "詳細", admin_user_path(user), class: "btn btn-neutral" %>
+                  </td>
+                  <td class="ml-2 whitespace-nowrap">
+                    <%= link_to "編集", edit_admin_user_path(user), class: "btn btn-success" %>
+                  </td>
+                  <td class="ml-2 whitespace-nowrap">
+                    <%= link_to "削除", admin_user_path(user), data: { turbo_method: :delete }, class: "btn btn-error" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
