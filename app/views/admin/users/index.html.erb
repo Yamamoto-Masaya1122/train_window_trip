@@ -6,7 +6,7 @@
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
             <div>
               <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                ユーザー一覧
+                <%= t('.title') %>
               </h2>
             </div>
           </div>
@@ -16,67 +16,44 @@
                 <th scope="col" class="px-6 py-3 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                      ID
+                      <%= User.human_attribute_name(:id) %></th>
                     </span>
                   </div>
                 </th>
                 <th scope="col" class="px-6 py-3 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 ml-1">
-                      氏名
+                      <%= User.human_attribute_name(:name) %></th>
                     </span>
                   </div>
                 </th>
                 <th scope="col" class="px-6 py-3 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 ml-3">
-                      権限
+                      <%= User.human_attribute_name(:role) %></th>
                     </span>
                   </div>
                 </th>
                 <th scope="col" class="px-6 py-3 text-start">
                   <div class="flex items-center gap-x-2">
                     <span class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200 ml-3">
-                      作成日時
+                      <%= User.human_attribute_name(:created_at) %></th>
                     </span>
                   </div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2"></div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2"></div>
+                </th>
+                <th scope="col" class="px-6 py-3 text-start">
+                  <div class="flex items-center gap-x-2"></div>
                 </th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-              <% @users.each do |user| %>
-                <tr>
-                  <td class="h-px w-72 whitespace-nowrap">
-                    <div class="ps-6 py-3">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200"><%= user.id %></span>
-                    </div>
-                  </td>
-                  <td class="h-px w-72 whitespace-nowrap">
-                    <div class="px-6 py-3">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200"><%= user.name %></span>
-                    </div>
-                  </td>
-                  <td class="h-px w-72 whitespace-nowrap">
-                    <div class="px-6 py-3">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200 ml-3"><%= user.role %></span>
-                    </div>
-                  </td>
-                  <td class="h-px w-72 whitespace-nowrap">
-                    <div class="px-6 py-3">
-                      <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200 ml-3"><%= user.created_at %></span>
-                    </div>
-                  </td>
-                  <td class="ml-5 whitespace-nowrap">
-                    <%= link_to "詳細", admin_user_path(user), class: "btn btn-neutral" %>
-                  </td>
-                  <td class="ml-2 whitespace-nowrap">
-                    <%= link_to "編集", edit_admin_user_path(user), class: "btn btn-success" %>
-                  </td>
-                  <td class="ml-2 whitespace-nowrap">
-                    <%= link_to "削除", admin_user_path(user), data: { turbo_method: :delete }, class: "btn btn-error" %>
-                  </td>
-                </tr>
-              <% end %>
+              <%= render @users %>
             </tbody>
           </table>
         </div>

@@ -11,9 +11,11 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
+        role: '権限'
         avatar: 'アバター'
       comment:
         body: 'コメント'
+        user: '作成者'
       line:
         description: '詳細'
         line_url: 'ホームページ'
@@ -22,3 +24,13 @@ ja:
         name: 'カテゴリ'
       room:
         name: 'ルーム名'
+        user: '作成者'
+  attributes:
+    id: 'ID'
+    created_at: '作成日時'
+    updated_at: '更新日時'
+  enums:
+    user:
+      role:
+        general: '一般'
+        admin: '管理者'
