@@ -12,6 +12,8 @@ ja:
     password_reset: 'パスワードリセット'
     password_forget: 'パスワードをお忘れですか？'
     delete: '削除'
+    show: '詳細'
+    edit: '編集'
     top_button: 'トップページに戻る'
     line_show_button: '路線詳細ページに戻る'
     new_room_button: 'チャットルームを作る'
@@ -21,6 +23,7 @@ ja:
     line_autumn_like_ranking: '秋に行って欲しい路線'
     line_winter_like_ranking: '冬に行って欲しい路線'
     view_more_button: 'もっと見る'
+    delete_confirm: '削除しますか？'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
@@ -107,3 +110,13 @@ ja:
         fail: 'ログインに失敗しました'
       destroy:
         success: 'ログアウトしました'
+    dashboards:
+      index:
+        title: 'ダッシュボード'
+    users:
+      index:
+        title: 'ユーザー一覧'
+      edit:
+        title: 'ユーザー編集'
+      show:
+        title: 'ユーザー詳細'
