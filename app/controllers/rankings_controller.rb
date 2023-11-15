@@ -3,24 +3,28 @@ class RankingsController < ApplicationController
   before_action :crown_set
 
   def index
-    case params[:season]
-    when 'spring'
-      @line_like_ranks = calculate_rankings('桜')
-    when 'autumn'
-      @line_like_ranks = calculate_rankings('紅葉')
-    when 'winter'
-      @line_like_ranks = calculate_rankings('雪')
-    else
-      @line_like_ranks = Line.joins(:likes)
-                             .group('lines.id')
-                             .select('lines.*, COUNT(likes.id) AS likes_count')
-                             .order('likes_count DESC')
-                             .limit(5)
-      calculate_crown_rank(@line_like_ranks)
-    end
+    @line_like_ranks = load_rankings
+    calculate_crown_rank(@line_like_ranks) unless params[:season] == 'likes'
   end
 
   private
+
+  def load_rankings
+    case params[:season]
+    when 'spring'
+      calculate_rankings('桜')
+    when 'autumn'
+      calculate_rankings('紅葉')
+    when 'winter'
+      calculate_rankings('雪')
+    else
+      Line.joins(:likes)
+          .group('lines.id')
+          .select('lines.*, COUNT(likes.id) AS likes_count')
+          .order('likes_count DESC')
+          .limit(5)
+    end
+  end
 
   def calculate_rankings(category_name)
     category = Category.find_by(name: category_name)
