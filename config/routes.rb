@@ -18,10 +18,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :like_rankings, only: %i[index]
-  resources :spring_rankings, only: %i[index]
-  resources :winter_rankings, only: %i[index]
-  resources :autumn_rankings, only: %i[index]
+  resources :rankings, only: %i[index]
   resources :password_resets
   resources :rooms, only: %i[index show] do
     resources :comments
