@@ -1,6 +1,6 @@
 .chat-room {
   height: 720px;
-  width: 100%;
+  width: 80%;
   background-color: #D7EEFF;
   overflow: scroll;
   border: solid;
@@ -8,4 +8,8 @@
 }
 .input-group {
   width: 500px;
+}
+
+.input-form {
+  width: 80%;
 }
