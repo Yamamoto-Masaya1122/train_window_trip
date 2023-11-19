@@ -1,13 +1,12 @@
 .chat-room {
-  height: 720px;
+  height: 650px;
   width: 80%;
   background-color: #D7EEFF;
   overflow: scroll;
   border: solid;
   border-color: #e5e7eb;
-}
-.input-group {
-  width: 500px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .input-form {

@@ -1,6 +1,6 @@
 <body data-current-user-id="<%= current_user.id %>">
   <div class="flex flex-col justify-center items-center">
-    <div class="chat-room justify-center">
+    <div class="chat-room justify-center mt-9">
       <div data-room-id="<%= @room.id %>" id="comments">
         <% @comments.each do |comment| %>
           <% if comment.user_id == current_user.id %>
@@ -40,8 +40,8 @@
       </div>
     </div>
     <!-- 入力フォーム -->
-    <div class="input-form relative w-full">
-      <textarea id="room_input" class="p-4 pb-12 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" placeholder="コメントを入力してください"></textarea>
+    <div class="input-form relative w-full mb-9">
+      <textarea id="room_input" class="p-4 pb-12 block w-full border-gray-300 rounded-b-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" placeholder="コメントを入力してください"></textarea>
       <div class="absolute bottom-px inset-x-px p-2 rounded-b-md bg-white dark:bg-slate-900">
         <div class="flex justify-between items-center">
           <div class="flex items-center"></div>
