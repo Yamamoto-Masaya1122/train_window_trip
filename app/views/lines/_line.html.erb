@@ -1,5 +1,5 @@
-<div class="card w-96 bg-neutral-100 hover:bg-neutral-200 shadow-xl ml-10 mb-10">
-  <figure><%= image_tag line.image %></figure>
+<div class="group flex flex-col bg-white h-96 w-72 border border-gray-200 shadow-sm rounded-xl dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] m-5">
+  <%= image_tag line.image, class: 'h-52 w-full object-cover rounded-t-xl' %>
   <div class="card-body relative">
     <div class="flex">
       <div data-turbo="false">
