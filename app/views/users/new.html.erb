@@ -1,37 +1,31 @@
-<div class="container flex items-center justify-center flex-1 h-full mx-auto">      
-  <div class="w-full max-w-lg">
-    <div class="leading-loose">
-      <%= form_with model: @user, class: 'max-w-lg px-10 py-12 xl:mt-16 m-auto', local: true do |f| %>
-        <h1 class="mb-4 text-2xl font-bold text-center text-black-900"><%= t '.title' %></h1>
-        <%= render 'shared/error_messages', object: f.object %>
-        <div class="mb-3 flex-1">
-          <div class="pt-2 pb-2 text-sm">
+<div class="w-full max-w-lg mx-auto p-6 mt-16">
+  <div class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <div class="p-4 sm:p-7">
+      <div class="text-center">
+        <h1 class="block text-2xl font-bold text-gray-800 dark:text-white"><%= t '.title' %></h1>
+      </div>
+      <div class="mt-5">
+        <%= form_with model: @user, class: 'grid gap-y-4', local: true do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="block text-sm mb-2 dark:text-white">
             <%= f.label :name %>
           </div>
-          <%= f.text_field :name, class: 'input input-bordered w-full' %>
-        </div>
-        <div class="mb-3 flex-1">
-          <div class="pt-2 pb-2 text-sm">
+          <%= f.text_field :name, class: 'py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400' %>
+          <div class="block text-sm mb-2 dark:text-white">
             <%= f.label :email %>
           </div>
-          <%= f.email_field :email, class: 'input input-bordered w-full' %>
-        </div>
-        <div class="mb-3 flex-1">
-          <div class="pt-2 pb-2 text-sm">
+          <%= f.email_field :email, class: 'py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400' %>
+          <div class="block text-sm mb-2 dark:text-white">
             <%= f.label :password %>
           </div>
-          <%= f.password_field :password, class: 'input input-bordered w-full' %>
-        </div>
-        <div class="mb-3 flex-1">
-          <div class="pt-2 pb-2 text-sm">
+          <%= f.password_field :password, class: 'py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400' %>
+          <div class="block text-sm mb-2 dark:text-white">
             <%= f.label :password_confirmation %>
           </div>
-          <%= f.password_field :password_confirmation, class: 'input input-bordered w-full' %>
-        </div>
-        <div class="flex items-center justify-between mt-8">
-          <%= f.submit (t 'defaults.register'), type: 'submit', class: 'cursor-pointer py-2 px-4  bg-accent hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg' %>
-        </div>
-      <% end %>
+          <%= f.password_field :password_confirmation, class: 'py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400' %>
+          <%= f.submit (t 'defaults.register'), type: 'submit', class: 'py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
