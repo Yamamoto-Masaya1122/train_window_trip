@@ -1,5 +1,7 @@
 ![本番ogp3](https://github.com/Yamamoto-Masaya1122/train_window_trip/assets/114839770/3debb711-69c9-4fff-bc11-804192fdd67d)
 # train_window_trip
+### ■サービスURL
+https://www.train-window-trip.com/
 ### ■サービス概要
 
 - いつでもどこでも電車で旅行する体験ができるアプリです。
@@ -98,4 +100,4 @@
 https://www.figma.com/file/PxMecqG2lpliznWe9NxGPF/Train-Window-View?type=design&node-id=0%3A1&mode=design&t=y3qClG9dKz7qz4j9-1
 
 ### ■ER図
-[![Image from Gyazo](https://i.gyazo.com/27a331c0dfee97d96b8e78067a3fa9b5.png)](https://gyazo.com/27a331c0dfee97d96b8e78067a3fa9b5)
+[![Image from Gyazo](https://i.gyazo.com/227861ba993d088f60ef60673496f0d4.png)](https://gyazo.com/227861ba993d088f60ef60673496f0d4)
