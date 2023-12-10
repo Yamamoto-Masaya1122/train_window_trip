@@ -57,6 +57,8 @@ group :development, :test do
   gem 'rubocop', require:false
   gem 'rubocop-rails', require:false
   gem 'letter_opener_web', '~> 2.0'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
