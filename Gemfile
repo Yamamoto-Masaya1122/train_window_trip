@@ -59,6 +59,7 @@ group :development, :test do
   gem 'letter_opener_web', '~> 2.0'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'simplecov', require: false, group: :test
 end
 
 group :development do
